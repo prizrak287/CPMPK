@@ -1,0 +1,27 @@
+TAP version 13
+ok 1 - SpeakCest: Тест 1 - вход в учетную запись
+ok 2 - SpeakCest: Тест 2 - выход из учетной записи
+ok 3 - SpeakCest: Тест 3 - изменение статуса пользователя
+ok 4 - SpeakCest: Тест 4 - поиск
+ok 5 - SpeakCest: Тест 5/6 - создание/удаление группы
+ok 6 - SpeakCest: Тест 7 - проверка атрибутов чата
+ok 7 - SpeakCest: Тест 8 - отправка личных сообщений пользователю
+ok 8 - SpeakCest: Тест 9 - отправка сообщений в группу
+not ok 9 - Error: SpeakCest: Тест 11 - пересылка сообщений
+not ok 10 - Failure: SpeakCest: Тест 12 - черновик
+  ---
+  message: 'Failed asserting that any element by ''li.contacts-list__item:nth-child(3)'' on page /#chats'
+  severity: fail
+  ...
+ok 11 - SpeakCest: Тест 13 - отображение аватара чата в списке чатов
+ok 12 - SpeakCest: Тест 14 - проверка статуса пользователя на учетной записи другого пользователя
+ok 13 - SpeakCest: Тест 15 - проверка активности пользователя в системе
+ok 14 - SpeakCest: Тест 17 - создание задач
+not ok 15 - Failure: SpeakCest: Тест 18 - редактирование статуса задачи
+  ---
+  message: 'Failed asserting that any element by ''li.tasks-catalog-task:nth-child(1)'' on page /#tasks'
+  severity: fail
+  ...
+ok 16 - SpeakCest: Тест 19 - редактирование задачи
+ok 17 - SpeakCest: Тест 20 - удаление задачи
+1..17

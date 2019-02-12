@@ -1,0 +1,14 @@
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+actor_suffix: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+        - Codeception\Extension\RunProcess:
+            - java -jar "D:\PHP\codeception\modules\selenium-server-standalone-3.8.1.jar" # включить Selenium Server
+            - chromedriver --url-base=/wd/hub
+            - run --html="acceptancelog.html" --tap="acceptancelog.log"

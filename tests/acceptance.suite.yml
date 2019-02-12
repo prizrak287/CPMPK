@@ -1,0 +1,31 @@
+# Codeception Test Suite Configuration
+#
+# Suite for acceptance tests.
+# Perform tests in browser using the WebDriver or PhpBrowser.
+# If you need both WebDriver and PHPBrowser tests - create a separate suite.
+
+actor: AcceptanceTester
+modules:
+    enabled:
+    - WebDriver:
+        browser: chrome
+        url: https://ucalls.ru:3443
+        cache: false
+        window_size: maximize
+        clear_cookies: true
+        restart: true
+
+
+
+
+
+#    - AngularJS:
+#            url:
+#            port: 9515 # включить для работы через ChromeDriver, отключить для работы через Selenium Server
+#            browser: 'firefox'
+#            capabilities:
+#                chromeOptions:
+#                    args:
+#                        - disable-gpu # включить запрет GPU
+#                        - no-sandbox # включить для пользователя "Administrator" или root
+#                        #- headless # включить фоновый режим тестирования (скрывает окно браузера)

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpAnalysisConfiguration">
+    <unchecked_exceptions>
+      <fqn value="\Error" />
+      <fqn value="\ExceptionWithPsycho" />
+      <fqn value="\LogicException" />
+      <fqn value="\RuntimeException" />
+    </unchecked_exceptions>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
+</project>
