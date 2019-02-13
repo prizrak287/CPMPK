@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1dc1e618-a155-4492-ae37-aef0fcc167da" name="Default" comment="" />
+    <list default="true" id="1dc1e618-a155-4492-ae37-aef0fcc167da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/_output/failed" beforeDir="false" afterPath="$PROJECT_DIR$/tests/_output/failed" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/_support/DocumentReceptionTester.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/_support/Page/DocumentReception.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/_support/Page/DocumentReception.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/acceptance/PsychoCest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/acceptance/PsychoCest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Автотестирование ЦПМПК.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Автотестирование ЦПМПК.xlsx" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,30 +27,14 @@
     <favorites_list name="RZDTests" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5235849">
+    <splitter split-orientation="horizontal" split-proportion="0.5821513">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/tests/acceptance/PsychoCest.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="862">
-                  <caret line="1260" column="5" selection-start-line="1260" selection-start-column="5" selection-end-line="1260" selection-end-column="5" />
-                  <folding>
-                    <element signature="n#Test8fillDocumentReceptionPart0#0;n#PsychoCest#0;n#!!top" />
-                    <element signature="n#Test8fillDocumentReceptionPart1#0;n#PsychoCest#0;n#!!top" />
-                    <element signature="n#Test8fillDocumentReceptionPart2#0;n#PsychoCest#0;n#!!top" />
-                    <element signature="n#Test8fillDocumentReceptionPart3#0;n#PsychoCest#0;n#!!top" />
-                    <element signature="n#Test8fillDocumentReceptionPart5#0;n#PsychoCest#0;n#!!top" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/tests/_support/ExceptionWithPsycho.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="51">
-                  <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+                <state relative-caret-position="425">
+                  <caret line="1532" column="30" lean-forward="true" selection-start-line="1532" selection-start-column="30" selection-end-line="1532" selection-end-column="30" />
                 </state>
               </provider>
             </entry>
@@ -88,29 +79,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/tests/_support/DocumentReceptionTester.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="27" selection-start-line="27" selection-end-line="27" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/tests/_support/Page/DocumentReception.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="544">
-                  <caret line="104" column="9" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../codeception/vendor/codeception/codeception/src/Codeception/Test/Cest.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1360">
-                  <caret line="85" selection-start-line="85" selection-end-line="85" />
+                <state relative-caret-position="357">
+                  <caret line="48" column="72" selection-start-line="48" selection-start-column="72" selection-end-line="48" selection-end-column="72" />
                 </state>
               </provider>
             </entry>
@@ -121,7 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>500</find>
       <find>SelectDateBack</find>
       <find>driver</find>
       <find>chr</find>
@@ -151,6 +123,7 @@
       <find>$dr-&gt;checkingFiledInDocumentReception('Тьюторское сопровождение'</find>
       <find>$dr-&gt;checkingFiledInDocumentReception('Уровень образования'</find>
       <find>$dr-&gt;checkingFiledInDocumentReception('$dr -&gt; variantProgram</find>
+      <find>'div.document-header'</find>
     </findStrings>
     <replaceStrings>
       <replace>$this</replace>
@@ -181,7 +154,11 @@
       <replace>$dr-&gt;checkingFiledInDocumentReception($dr-&gt;tutorEscort</replace>
       <replace>$dr-&gt;checkingFiledInDocumentReception($dr -&gt; levelEducation</replace>
       <replace>$dr-&gt;checkingFiledInDocumentReception($dr -&gt; variantProgram</replace>
+      <replace>$dr-&gt;header</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -235,8 +212,8 @@
         <option value="$PROJECT_DIR$/tests/_support/ChildrenCardsTester.php" />
         <option value="$PROJECT_DIR$/tests/_support/TableReceptionTester.php" />
         <option value="$PROJECT_DIR$/tests/_support/DocumentReceptionTester.php" />
-        <option value="$PROJECT_DIR$/tests/acceptance/PsychoCest.php" />
         <option value="$PROJECT_DIR$/tests/_support/Page/DocumentReception.php" />
+        <option value="$PROJECT_DIR$/tests/acceptance/PsychoCest.php" />
       </list>
     </option>
   </component>
@@ -344,13 +321,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Codeception.PsychoCest.php::Test8fillDocumentReceptionPart4">
-    <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart0" type="CodeceptionConfigurationType" factoryName="Codeception" temporary="true">
-      <PhpTestRunnerSettings file="$PROJECT_DIR$/tests/acceptance/PsychoCest.php" method="Test8fillDocumentReceptionPart0" scope="Method" />
+  <component name="RunManager" selected="Codeception.PsychoCest.php::Test11DirectionCorrectorWorkPart2">
+    <configuration name="PsychoCest.php::Test10DirectionCorrectorWork" type="CodeceptionConfigurationType" factoryName="Codeception" temporary="true">
+      <PhpTestRunnerSettings file="$PROJECT_DIR$/tests/acceptance/PsychoCest.php" method="Test10DirectionCorrectorWork" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart1" type="CodeceptionConfigurationType" factoryName="Codeception" temporary="true">
-      <PhpTestRunnerSettings file="$PROJECT_DIR$/tests/acceptance/PsychoCest.php" method="Test8fillDocumentReceptionPart1" scope="Method" />
+    <configuration name="PsychoCest.php::Test11DirectionCorrectorWorkPart2" type="CodeceptionConfigurationType" factoryName="Codeception" temporary="true">
+      <PhpTestRunnerSettings file="$PROJECT_DIR$/tests/acceptance/PsychoCest.php" method="Test11DirectionCorrectorWorkPart2" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart2" type="CodeceptionConfigurationType" factoryName="Codeception" temporary="true">
@@ -374,20 +351,20 @@
     </configuration>
     <list>
       <item itemvalue="Codeception.RZDTests" />
-      <item itemvalue="Codeception.PsychoCest.php::Test8fillDocumentReceptionPart0" />
-      <item itemvalue="Codeception.PsychoCest.php::Test8fillDocumentReceptionPart1" />
       <item itemvalue="Codeception.PsychoCest.php::Test8fillDocumentReceptionPart2" />
       <item itemvalue="Codeception.PsychoCest.php::Test8fillDocumentReceptionPart3" />
       <item itemvalue="Codeception.PsychoCest.php::Test8fillDocumentReceptionPart4" />
       <item itemvalue="PHP Script.Code" />
+      <item itemvalue="Codeception.PsychoCest.php::Test10DirectionCorrectorWork" />
+      <item itemvalue="Codeception.PsychoCest.php::Test11DirectionCorrectorWorkPart2" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Codeception.PsychoCest.php::Test11DirectionCorrectorWorkPart2" />
+        <item itemvalue="Codeception.PsychoCest.php::Test10DirectionCorrectorWork" />
         <item itemvalue="Codeception.PsychoCest.php::Test8fillDocumentReceptionPart4" />
         <item itemvalue="Codeception.PsychoCest.php::Test8fillDocumentReceptionPart3" />
         <item itemvalue="Codeception.PsychoCest.php::Test8fillDocumentReceptionPart2" />
-        <item itemvalue="Codeception.PsychoCest.php::Test8fillDocumentReceptionPart1" />
-        <item itemvalue="Codeception.PsychoCest.php::Test8fillDocumentReceptionPart0" />
       </list>
     </recent_temporary>
   </component>
@@ -587,43 +564,44 @@
       <workItem from="1549622849454" duration="11696000" />
       <workItem from="1549868179007" duration="1540000" />
       <workItem from="1549889265203" duration="609000" />
+      <workItem from="1550051287127" duration="14514000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PsychoCest_php__Test8fillDocumentReceptionPart1 - 2019.02.08 at 16h 50m 49s.xml">
-      <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart1" configurationId="CodeceptionConfigurationType" />
+    <history-entry file="PsychoCest_php__Test10DirectionCorrectorWork - 2019.02.13 at 15h 52m 15s.xml">
+      <configuration name="PsychoCest.php::Test10DirectionCorrectorWork" configurationId="CodeceptionConfigurationType" />
     </history-entry>
-    <history-entry file="PsychoCest_php__Test8fillDocumentReceptionPart1 - 2019.02.08 at 16h 54m 47s.xml">
-      <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart1" configurationId="CodeceptionConfigurationType" />
+    <history-entry file="PsychoCest_php__Test11DirectionCorrectorWorkPart2 - 2019.02.13 at 16h 38m 53s.xml">
+      <configuration name="PsychoCest.php::Test11DirectionCorrectorWorkPart2" configurationId="CodeceptionConfigurationType" />
     </history-entry>
-    <history-entry file="PsychoCest_php__Test8fillDocumentReceptionPart1 - 2019.02.08 at 16h 58m 59s.xml">
-      <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart1" configurationId="CodeceptionConfigurationType" />
+    <history-entry file="PsychoCest_php__Test11DirectionCorrectorWorkPart2 - 2019.02.13 at 16h 40m 34s.xml">
+      <configuration name="PsychoCest.php::Test11DirectionCorrectorWorkPart2" configurationId="CodeceptionConfigurationType" />
     </history-entry>
-    <history-entry file="PsychoCest_php__Test8fillDocumentReceptionPart2 - 2019.02.08 at 17h 00m 05s.xml">
-      <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart2" configurationId="CodeceptionConfigurationType" />
+    <history-entry file="PsychoCest_php__Test11DirectionCorrectorWorkPart2 - 2019.02.13 at 16h 41m 54s.xml">
+      <configuration name="PsychoCest.php::Test11DirectionCorrectorWorkPart2" configurationId="CodeceptionConfigurationType" />
     </history-entry>
-    <history-entry file="PsychoCest_php__Test8fillDocumentReceptionPart2 - 2019.02.08 at 17h 06m 11s.xml">
-      <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart2" configurationId="CodeceptionConfigurationType" />
+    <history-entry file="PsychoCest_php__Test11DirectionCorrectorWorkPart2 - 2019.02.13 at 16h 42m 53s.xml">
+      <configuration name="PsychoCest.php::Test11DirectionCorrectorWorkPart2" configurationId="CodeceptionConfigurationType" />
     </history-entry>
-    <history-entry file="PsychoCest_php__Test8fillDocumentReceptionPart3 - 2019.02.08 at 17h 07m 14s.xml">
-      <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart3" configurationId="CodeceptionConfigurationType" />
+    <history-entry file="PsychoCest_php__Test11DirectionCorrectorWorkPart2 - 2019.02.13 at 16h 43m 57s.xml">
+      <configuration name="PsychoCest.php::Test11DirectionCorrectorWorkPart2" configurationId="CodeceptionConfigurationType" />
     </history-entry>
-    <history-entry file="PsychoCest_php__Test8fillDocumentReceptionPart3 - 2019.02.08 at 17h 09m 36s.xml">
-      <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart3" configurationId="CodeceptionConfigurationType" />
+    <history-entry file="PsychoCest_php__Test11DirectionCorrectorWorkPart2 - 2019.02.13 at 16h 44m 39s.xml">
+      <configuration name="PsychoCest.php::Test11DirectionCorrectorWorkPart2" configurationId="CodeceptionConfigurationType" />
     </history-entry>
-    <history-entry file="PsychoCest_php__Test8fillDocumentReceptionPart3 - 2019.02.08 at 17h 14m 43s.xml">
-      <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart3" configurationId="CodeceptionConfigurationType" />
+    <history-entry file="PsychoCest_php__Test11DirectionCorrectorWorkPart2 - 2019.02.13 at 16h 45m 50s.xml">
+      <configuration name="PsychoCest.php::Test11DirectionCorrectorWorkPart2" configurationId="CodeceptionConfigurationType" />
     </history-entry>
-    <history-entry file="PsychoCest_php__Test8fillDocumentReceptionPart4 - 2019.02.08 at 17h 15m 31s.xml">
-      <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart4" configurationId="CodeceptionConfigurationType" />
+    <history-entry file="PsychoCest_php__Test11DirectionCorrectorWorkPart2 - 2019.02.13 at 16h 47m 18s.xml">
+      <configuration name="PsychoCest.php::Test11DirectionCorrectorWorkPart2" configurationId="CodeceptionConfigurationType" />
     </history-entry>
-    <history-entry file="PsychoCest_php__Test8fillDocumentReceptionPart4 - 2019.02.08 at 17h 20m 09s.xml">
-      <configuration name="PsychoCest.php::Test8fillDocumentReceptionPart4" configurationId="CodeceptionConfigurationType" />
+    <history-entry file="PsychoCest_php__Test11DirectionCorrectorWorkPart2 - 2019.02.13 at 16h 49m 13s.xml">
+      <configuration name="PsychoCest.php::Test11DirectionCorrectorWorkPart2" configurationId="CodeceptionConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1253525000" />
+    <option name="totallyTimeSpent" value="1268039000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -638,13 +616,13 @@
     <frame x="1912" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49847096" visible="true" weight="0.09701493" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49847096" visible="true" weight="0.09808102" />
       <window_info id="Structure" order="1" sideWeight="0.50152904" side_tool="true" weight="0.17803837" />
       <window_info id="Favorites" order="2" sideWeight="0.50152904" side_tool="true" weight="0.17803837" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32987747" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.67430705" weight="0.31735379" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5842217" weight="0.32598275" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.5842217" visible="true" weight="0.32598275" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.48933902" weight="0.32917467" />
@@ -652,7 +630,7 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.41577825" side_tool="true" weight="0.37200382" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4914712" weight="0.32917467" />
-      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="12" weight="0.32917467" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -702,6 +680,11 @@
           <url>file://$PROJECT_DIR$/tests/acceptance/PsychoCest.php</url>
           <line>261</line>
           <option name="timeStamp" value="158" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/acceptance/PsychoCest.php</url>
+          <line>1515</line>
+          <option name="timeStamp" value="172" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -794,34 +777,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../codeception/vendor/codeception/codeception/src/Codeception/Test/Test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/acceptance/PsychoCest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="862">
-          <caret line="1260" column="5" selection-start-line="1260" selection-start-column="5" selection-end-line="1260" selection-end-column="5" />
-          <folding>
-            <element signature="n#Test8fillDocumentReceptionPart0#0;n#PsychoCest#0;n#!!top" />
-            <element signature="n#Test8fillDocumentReceptionPart1#0;n#PsychoCest#0;n#!!top" />
-            <element signature="n#Test8fillDocumentReceptionPart2#0;n#PsychoCest#0;n#!!top" />
-            <element signature="n#Test8fillDocumentReceptionPart3#0;n#PsychoCest#0;n#!!top" />
-            <element signature="n#Test8fillDocumentReceptionPart5#0;n#PsychoCest#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/_support/ExceptionWithPsycho.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/AcceptanceTester.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1989">
@@ -843,13 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/_support/TableReceptionTester.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/DocumentReceptionTester.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -857,17 +805,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/_support/TableReceptionTester.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../codeception/vendor/codeception/codeception/src/Codeception/Test/Test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/_support/ExceptionWithPsycho.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../../codeception/vendor/codeception/codeception/src/Codeception/Test/Cest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
+        <state relative-caret-position="621">
           <caret line="85" selection-start-line="85" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/acceptance/PsychoCest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="1532" column="30" lean-forward="true" selection-start-line="1532" selection-start-column="30" selection-end-line="1532" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/Page/DocumentReception.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="104" column="9" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
+        <state relative-caret-position="357">
+          <caret line="48" column="72" selection-start-line="48" selection-start-column="72" selection-end-line="48" selection-end-column="72" />
         </state>
       </provider>
     </entry>
