@@ -169,6 +169,11 @@ class DocumentReception
     public function scrollTo($element)
     {
         $I = $this->tester;
+        if (!$I->boolSeeElement($element)) {
+            $I->moveMouseOver('div.ps__rail-y');
+            $I->clickWithLeftButton(null, 0, 200);
+            $I -> wait(1);
+        }
         $I->dragAndDrop('div.ps__rail-y', $element);
         $I->wait(1);
         $I->click('div.header-section');

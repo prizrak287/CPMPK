@@ -1512,8 +1512,7 @@ class PsychoCest
         //Выбираем "Дошкольники"
         $dr->setValueFieldInDocumentReception($dr->ovg, 'Дошкольники');
         $dr->setValueFieldInDocumentReception($dr->program, 'Глухие');
-        $dr->scrollTo($dr->teacherSocial);
-        $dr->scrollTo('div.document-section:nth-child(3)');
+        $dr->scrollTo($dr->teacherPsy);
         $arr = ['адаптивных форм поведения', '(5 лет) коррекция и развитие компетенций коммуникативной и эмоционально-волевой сферы',
             'помощь в адаптации', 'развитие адаптивных форм поведения', 'развитие пространственно-временных представлений'];
         $dr->checkingFiledInDocumentReception($dr->teacherPsy, $arr);
