@@ -1,6 +1,7 @@
 <?php
 
 use \Page\DocumentReception as DocumentReception;
+use \Step\Acceptance\HeaderTester as HeaderTester;
 
 class PsychoCest
 {
@@ -404,7 +405,7 @@ class PsychoCest
         }
     }
 
-    public function Test8fillDocumentReceptionPart2(AcceptanceTester $I)
+    public function Test9fillDocumentReceptionPart2(AcceptanceTester $I)
     {
         $dr = new DocumentReception($I);
         $I->moveToServer('Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 2(Дошкольники)');
@@ -595,7 +596,7 @@ class PsychoCest
         }
     }
 
-    public function Test8fillDocumentReceptionPart3(AcceptanceTester $I)
+    public function Test10fillDocumentReceptionPart3(AcceptanceTester $I)
     {
         $dr = new DocumentReception($I);
         $I->moveToServer('Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 3(СОШ)');
@@ -797,7 +798,7 @@ class PsychoCest
         }
     }
 
-    public function Test8fillDocumentReceptionPart4(AcceptanceTester $I)
+    public function Test11fillDocumentReceptionPart4(AcceptanceTester $I)
     {
         $dr = new DocumentReception($I);
         $I->moveToServer('Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 4(ФГОС НОО ОВЗ, ФГОС УО)');
@@ -1107,7 +1108,7 @@ class PsychoCest
         $dr->scrollTo($dr->header);
     }
 
-    public function Test8fillDocumentReceptionPart5(AcceptanceTester $I)
+    public function Test12fillDocumentReceptionPart5(AcceptanceTester $I)
     {
         $dr = new DocumentReception($I);
         $I->moveToServer('Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 5(СПО)');
@@ -1210,7 +1211,7 @@ class PsychoCest
         $dr->scrollTo($dr->header);
     }
 
-    public function Test9fillDocumentReception(AcceptanceTester $I)
+    public function Test13fillDocumentReceptionPart6(AcceptanceTester $I)
     {
         $dr = new DocumentReception($I);
         $monthsOfYears = ['янв', 'февр', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сент', 'окт', 'нояб', 'дек'];
@@ -1260,7 +1261,7 @@ class PsychoCest
         $dr->checkingFiledInDocumentReception('Округ ОО', 'all');
     }
 
-    public function Test10DirectionCorrectorWorkPart1(AcceptanceTester $I)
+    public function Test14DirectionCorrectorWorkPart1(AcceptanceTester $I)
     {
         $dr = new DocumentReception($I);
         $I->moveToServer('Тест 10 - Заполнение документа приёма (Направление коррекционной работы) - Ранняя помощь');
@@ -1481,13 +1482,12 @@ class PsychoCest
         $dr->scrollTo($dr->header);
     }
 
-    public function Test11DirectionCorrectorWorkPart2(AcceptanceTester $I)
+    public function Test15DirectionCorrectorWorkPart2(HeaderTester $I)
     {
         $dr = new DocumentReception($I);
-        $I->moveToServer('Тест 10 - Заполнение документа приёма (Направление коррекционной работы) - Ранняя помощь');
+        $I->moveToServer('Тест 11 - Заполнение документа приёма (Направление коррекционной работы) - Дошкольники');
         $I->inputInSystem('admin', 'admin');
-        $I->waitForElement('div.table.ps > div', 30);
-        $I->wait(1);
+        $I->openSection('Карты детей');
         $count = $I->getQuantityElement('div.table.ps > div', 4);
         for ($i = 4; $i <= $count; $i++) {
             $I->moveMouseOver('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div');
@@ -1546,6 +1546,7 @@ class PsychoCest
         $arr = ['адаптивных форм поведения', '(5 лет) коррекция и развитие компетенций коммуникативной и эмоционально-волевой сферы',
             'помощь в адаптации', 'развитие адаптивных форм поведения', 'формирование продуктивного взаимодействия со взрослым'];
         $dr->checkingFiledInDocumentReception($dr->teacherPsy, $arr);
+        $dr->scrollTo($dr->teacherDefect);
         $arr = ['(другие возможные направления работы) вызывание элементарных реакций на зрительные, слуховые, тактильные стимулы',
             'конструктивной деятельности', '(5-6 лет) коррекция и развитие мыслительных операций, познавательных процессов',
             'обогащение сенсорного опыта и стимуляция сенсорной активности',
@@ -1573,7 +1574,7 @@ class PsychoCest
 
         //Тяжелые нарушения речи
         $dr->scrollTo($dr->program);
-        $dr->setValueFieldInDocumentReception($dr->program, 'Слабовидящие');
+        $dr->setValueFieldInDocumentReception($dr->program, 'Тяжелые нарушения речи');
         $dr->scrollTo($dr->teacherPsy);
         $arr = ['адаптивных форм поведения', 'активизация познавательной деятельности',
             'игровой деятельности', 'коммуникативных и социальных навыков', 'коммуникативных навыков'];
@@ -1709,5 +1710,272 @@ class PsychoCest
         $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[3]];
         $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
         $dr->scrollTo($dr->header);
+    }
+
+    public function Test16DirectionCorrectorWorkPart3(HeaderTester $I)
+    {
+        $dr = new DocumentReception($I);
+        $I->moveToServer('Тест 12 - Заполнение документа приёма (Направление коррекционной работы) - ФГОС');
+        $I->inputInSystem('admin', 'admin');
+        $I->openSection('Карты детей');
+        $count = $I->getQuantityElement('div.table.ps > div', 4);
+        for ($i = 4; $i <= $count; $i++) {
+            $I->moveMouseOver('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div');
+            $I->wait(1);
+            $status = $I->grabTextFrom('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div > div.cards-status > div.tooltip.tooltip--left > div');
+            if ($status == 'Документ не заполнен') break;
+        }
+        $I->wait(1);
+        $I->click('div.cell.cell--status > div', 'div.table.ps > div:nth-child(' . $i . ') > div.row');
+        $I->waitForElement('div.popup', 10);
+        $I->wait(1);
+        $I->click('div.popup > form > label:nth-child(1)');
+        $I->wait(1);
+        $I->click('a.button-orange', 'div.popup');
+        $I->waitForElement('div.document', 60);
+        $I->waitForElement('div.content', 60);
+        $I->waitForElement('div.document-section', 60);
+        $I->wait(1);
+
+        //Глухие
+        $dr->scrollTo($dr->program);
+        //Выбираем "ФГОС НОО ОВЗ, ФГОС УО"
+        $dr->setValueFieldInDocumentReception($dr->ovg, 'ФГОС НОО ОВЗ, ФГОС УО');
+        $dr->setValueFieldInDocumentReception($dr->program, 'Глухие');
+
+        //Вариант 1.1
+        $dr->scrollTo($dr->variantProgram);
+        $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 1.1');
+        $dr->scrollTo($dr->teacherPsy);
+        $arr = ['коррекция и развитие компетенций коммуникативной и эмоционально-волевой сферы', 'помощь в адаптации к условиям школьной среды',
+            'развитие продуктивного взаимодействия', 'развитие познавательного интереса и познавательной активности'];
+        $dr->checkingFiledInDocumentReception($dr->teacherPsy, $arr);
+        $arr = ['коррекция и развитие познавательной деятельности',
+            'развитие слухозрительного, слухового восприятия, речевого слуха, произносительной стороны речи, 
+            коммуникативных функций речи, правил коммуникации и применение их в социальной жизни'];
+        $dr->checkingFiledInDocumentReception($dr->teacherDefect, $arr);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[1], $dr->teacherSocialItems[2], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+        $dr->scrollTo($dr->header);
+
+        //Вариант 1.2
+        $dr->scrollTo($dr->variantProgram);
+        $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 1.2');
+        $dr->scrollTo($dr->teacherPsy);
+        $arr = ['коррекция и развитие компетенций коммуникативной и эмоционально-волевой сферы',
+            'помощь в адаптации к условиям школьной среды', 'развитие продуктивного взаимодействия',
+            'развитие познавательного интереса и познавательной активности'];
+        $dr->checkingFiledInDocumentReception($dr->teacherPsy, $arr);
+        $arr = ['коррекция и развитие познавательной деятельности',
+            'развитие слухозрительного, слухового восприятия, речевого слуха, произносительной стороны речи, 
+            коммуникативных функций речи, правил коммуникации и применение их в социальной жизни'];
+        $dr->checkingFiledInDocumentReception($dr->teacherDefect, $arr);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[1], $dr->teacherSocialItems[2], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+        $dr->scrollTo($dr->header);
+
+        //Вариант 1.3
+        $dr->scrollTo($dr->variantProgram);
+        $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 1.3');
+        $dr->scrollTo($dr->teacherPsy);
+        $arr = ['коррекция и развитие компетенций коммуникативной и эмоционально-волевой сферы', 'помощь в адаптации к условиям школьной среды',
+            'развитие продуктивного взаимодействия', 'развитие познавательного интереса и познавательной активности'];
+        $dr->checkingFiledInDocumentReception($dr->teacherPsy, $arr);
+        $arr = ['активизация элементарных навыков устной коммуникации',
+            'коррекция, развитие и активизация познавательной деятельности',
+            'формирование базовых учебных действий', 'формирование и развитие речевого слуха'];
+        $dr->checkingFiledInDocumentReception($dr->teacherDefect, $arr);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[1], $dr->teacherSocialItems[2], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+        $dr->scrollTo($dr->header);
+
+        //Вариант 1.4
+        $dr->scrollTo($dr->variantProgram);
+        $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 1.4');
+        $dr->scrollTo($dr->teacherPsy);
+        $arr = ['(другие возможные направления работы) вызывание элементарного эмоционального отклика',
+            'гармонизация эмоциональных состояний и реакций', 'развитие элементарных навыков социального взаимодействия',
+            'социальных компетенций'];
+        $dr->checkingFiledInDocumentReception($dr->teacherPsy, $arr);
+        $arr = ['(другие возможные направления работы) вызывание элементарных реакций на зрительные, слуховые, тактильные стимулы',
+            'обогащение сенсорного опыта и стимуляция сенсорной активности',
+            'обогащение сенсорного опыта и стимуляция сенсорной активности (пассивно)', 'развитие крупной и мелкой моторики'];
+        $dr->checkingFiledInDocumentReception($dr->teacherDefect, $arr);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[1], $dr->teacherSocialItems[2], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+        $dr->scrollTo($dr->header);
+    }
+
+    public function Test17DirectionCorrectorWorkPart4(HeaderTester $I)
+    {
+        $dr = new DocumentReception($I);
+        $I->moveToServer('Тест 13 - Заполнение документа приёма (Направление коррекционной работы) - СОШ');
+        $I->inputInSystem('admin', 'admin');
+        $I->openSection('Карты детей');
+        $count = $I->getQuantityElement('div.table.ps > div', 4);
+        for ($i = 4; $i <= $count; $i++) {
+            $I->moveMouseOver('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div');
+            $I->wait(1);
+            $status = $I->grabTextFrom('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div > div.cards-status > div.tooltip.tooltip--left > div');
+            if ($status == 'Документ не заполнен') break;
+        }
+        $I->wait(1);
+        $I->click('div.cell.cell--status > div', 'div.table.ps > div:nth-child(' . $i . ') > div.row');
+        $I->waitForElement('div.popup', 10);
+        $I->wait(1);
+        $I->click('div.popup > form > label:nth-child(1)');
+        $I->wait(1);
+        $I->click('a.button-orange', 'div.popup');
+        $I->waitForElement('div.document', 60);
+        $I->waitForElement('div.content', 60);
+        $I->waitForElement('div.document-section', 60);
+        $I->wait(1);
+
+        //Глухие
+        $dr->scrollTo($dr->program);
+        //Выбираем "СОШ"
+        $dr->setValueFieldInDocumentReception($dr->ovg, 'СОШ');
+        $dr->setValueFieldInDocumentReception($dr->program, 'Глухие');
+        $dr->scrollTo($dr->levelEducation);
+        $dr->setValueFieldInDocumentReception($dr->levelEducation, $dr->levelEducationItems[1]);
+        $dr->scrollTo($dr->teacherPsy);
+        $arr = ['(НОО) коррекция и профилактика нежелательного поведения', '(НОО) развитие продуктивного взаимодействия',
+            '(НОО) развитие учебно-познавательной мотивации', '(НОО)развитие эмоциональной сферы, коммуникативных и социальных навыков'];
+        $dr->checkingFiledInDocumentReception($dr->teacherPsy, $arr);
+        $arr = ['(НОО) коррекция и развитие познавательной деятельности, развитие мыслительных операций на основе изучения программного материала',
+            'развитие слухового и слухозрительного восприятия, понимания обращенной речи, формирование доступных способов коммуникации'];
+        $dr->checkingFiledInDocumentReception($dr->teacherDefect, $arr);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[1], $dr->teacherSocialItems[2], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+        $dr->scrollTo($dr->header);
+
+        //Слабослышпщие
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, 'Слабослышащие');
+        $dr->scrollTo($dr->levelEducation);
+        $dr->scrollTo($dr->teacherPsy);
+        $arr = ['(НОО) коррекция и профилактика нежелательного поведения', '(НОО) развитие продуктивного взаимодействия',
+            '(НОО) развитие учебно-познавательной мотивации', '(НОО)развитие эмоциональной сферы, коммуникативных и социальных навыков'];
+        $dr->checkingFiledInDocumentReception($dr->teacherPsy, $arr);
+        $arr = ['(НОО) коррекция и развитие познавательной деятельности, развитие мыслительных операций на основе изучения программного материала',
+            'развитие слухового и слухозрительного восприятия, понимания обращенной речи, формирование доступных способов коммуникации'];
+        $dr->checkingFiledInDocumentReception($dr->teacherDefect, $arr);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[1], $dr->teacherSocialItems[2], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+        $dr->scrollTo($dr->header);
+
+        //Слепые
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, 'Слепые');
+        $dr->scrollTo($dr->levelEducation);
+        $dr->scrollTo($dr->teacherPsy);
+        $arr = ['(НОО) коррекция и профилактика нежелательного поведения', '(НОО) развитие продуктивного взаимодействия',
+            '(НОО) развитие учебно-познавательной мотивации', '(НОО)развитие эмоциональной сферы, коммуникативных и социальных навыков'];
+        $dr->checkingFiledInDocumentReception($dr->teacherPsy, $arr);
+        $arr = ['(НОО) коррекция и развитие познавательной деятельности, развитие мыслительных операций на основе изучения программного материала',
+            'развитие слухового и слухозрительного восприятия, понимания обращенной речи, формирование доступных способов коммуникации'];
+        $dr->checkingFiledInDocumentReception($dr->teacherDefect, $arr);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[1], $dr->teacherSocialItems[2], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+        $dr->scrollTo($dr->header);
+
+        //Слабовидящие
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, 'Слабовидящие');
+        $dr->scrollTo($dr->levelEducation);
+        $dr->scrollTo($dr->teacherPsy);
+        $arr = ['(НОО) коррекция и профилактика нежелательного поведения', '(НОО) развитие продуктивного взаимодействия',
+            '(НОО) развитие учебно-познавательной мотивации', '(НОО)развитие эмоциональной сферы, коммуникативных и социальных навыков'];
+        $dr->checkingFiledInDocumentReception($dr->teacherPsy, $arr);
+        $arr = ['(НОО) коррекция и развитие познавательной деятельности, развитие мыслительных операций на основе изучения программного материала',
+            'развитие слухового и слухозрительного восприятия, понимания обращенной речи, формирование доступных способов коммуникации'];
+        $dr->checkingFiledInDocumentReception($dr->teacherDefect, $arr);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[1], $dr->teacherSocialItems[2], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+        $dr->scrollTo($dr->header);
+    }
+
+    public function Test18DirectionCorrectorWorkPart5(HeaderTester $I)
+    {
+        $dr = new DocumentReception($I);
+        $I->moveToServer('Тест 14 - Заполнение документа приёма (Направление коррекционной работы) - СПО');
+        $I->inputInSystem('admin', 'admin');
+        $I->openSection('Карты детей');
+        $count = $I->getQuantityElement('div.table.ps > div', 4);
+        for ($i = 4; $i <= $count; $i++) {
+            $I->moveMouseOver('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div');
+            $I->wait(1);
+            $status = $I->grabTextFrom('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div > div.cards-status > div.tooltip.tooltip--left > div');
+            if ($status == 'Документ не заполнен') break;
+        }
+        $I->wait(1);
+        $I->click('div.cell.cell--status > div', 'div.table.ps > div:nth-child(' . $i . ') > div.row');
+        $I->waitForElement('div.popup', 10);
+        $I->wait(1);
+        $I->click('div.popup > form > label:nth-child(1)');
+        $I->wait(1);
+        $I->click('a.button-orange', 'div.popup');
+        $I->waitForElement('div.document', 60);
+        $I->waitForElement('div.content', 60);
+        $I->waitForElement('div.document-section', 60);
+        $I->wait(1);
+
+        //Глухие
+        $dr->scrollTo($dr->program);
+        //Выбираем "СПО"
+        $dr->setValueFieldInDocumentReception($dr->ovg, 'СПО');
+        $dr->setValueFieldInDocumentReception($dr->program, 'Глухие');
+        $dr->scrollTo($dr->teacherSocial);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[3], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+
+        //Слабослышащие
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, 'Слабослышащие');
+        $dr->scrollTo($dr->teacherSocial);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[3], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+
+        //Слепые
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, 'Слепые');
+        $dr->scrollTo($dr->teacherSocial);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[3], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+
+        //Слабовидящие
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, 'Слабовидящие');
+        $dr->scrollTo($dr->teacherSocial);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[3], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+
+        //Нарушения опорно двигательного аппарата
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, 'Нарушения опорно двигательного аппарата');
+        $dr->scrollTo($dr->teacherSocial);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[3], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+
+        //Расстройство аутистического спектра
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, 'Расстройство аутистического спектра');
+        $dr->scrollTo($dr->teacherSocial);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[3], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+
+        //Умственная отсталость
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, 'Умственная отсталость');
+        $dr->scrollTo($dr->teacherSocial);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[3], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+
+        //Основная образовательная программа(норма)
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, 'Основная образовательная программа(норма)');
+        $dr->scrollTo($dr->teacherSocial);
+        $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[3], $dr->teacherSocialItems[4]];
+        $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
     }
 }

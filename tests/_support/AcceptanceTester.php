@@ -102,7 +102,7 @@ class AcceptanceTester extends \Codeception\Actor
     public function moveToServer($name)
     {
         $this -> wantTo($name);
-        $this -> amOnUrl('http://192.124.187.243:8723');
+        $this -> amOnUrl('http://192.124.187.243:8723/login/admin');
         $this -> waitForElement('div.auth', 60);
         $this -> waitForElement('button[type="submit"]', 60);
         $this -> wait(1);

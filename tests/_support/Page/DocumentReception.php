@@ -2,6 +2,7 @@
 
 namespace Page;
 
+use Exception;
 use \ExceptionWithPsycho;
 
 class DocumentReception
@@ -13,6 +14,8 @@ class DocumentReception
     public $contextMenu = ' > div.document-item__row > div > div.multiselect > div.multiselect__content-wrapper > ul.multiselect__content';
     public $required = ' > label > span > span.document-item__title-required';
     public $requiredForCheckboxes = ' > label > span > span > span.document-item__title-required';
+    private $scroll = 'div.ps__rail-y > div.ps__thumb-y';
+    private $previousScroll;
 
     public $type = 'div.document-section:nth-child(1) > div.document-section__row:nth-child(3) > div.document-item:nth-child(1)';
     public $ovg = 'div.document-section:nth-child(1) > div.document-section__row:nth-child(4) > div.document-item:nth-child(1)';
@@ -39,6 +42,8 @@ class DocumentReception
     public $teacherDefect = 'div.document-section:nth-child(2) > div.document-section__row:nth-child(4) > div.document-item:nth-child(1)';
     public $teacherSocial = 'div.document-section:nth-child(2) > div.document-section__row:nth-child(5) > div.document-item:nth-child(1)';
 
+    public $buttons = 'div.document-buttons';
+
     public $ovgItems = ['Ранняя помощь', 'Дошкольники', 'ФГОС НОО ОВЗ, ФГОС УО', 'СОШ', 'СПО'];
     public $programItems = ['Глухие', 'Слабослышащие', 'Слепые', 'Слабовидящие', 'Тяжелые нарушения речи', 'Нарушения опорно двигательного аппарата',
         'Задержка психического развития', 'Расстройство аутистического спектра', 'Умственная отсталость'];
@@ -58,13 +63,16 @@ class DocumentReception
     public $teacherSocialItems = ['(для обучающихся под опекой и ЦССВ) мониторинг социальной ситуации развития',
         '(1-5 классы – для обучающихся «группы риска») профилактика и коррекция асоциального (девиантного) поведения обучающегося',
         '(6-11 классы – для обучающихся «группы риска») профилактика и коррекция асоциального (девиантного) поведения обучающегося, повышение уровня правовой грамотности обучающегося и его семьи',
+        '(для обучающегося «группы риска») профилактика и коррекция асоциального (девиантного) поведения обучающегося, повышение уровня правовой грамотности обучающегося',
         '(обязательно для выбора) координация взаимодействия субъектов образовательного процесса'];
 
+    public $timeRepeatInspection = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(1) > div.document-item:nth-child(1)';
     protected $tester;
 
     public function __construct(\AcceptanceTester $I)
     {
         $this->tester = $I;
+        $this->previousScroll = $this->header;
     }
 
     public function checkingFiledInDocumentReception($field, $arr = null)
@@ -123,19 +131,22 @@ class DocumentReception
             }
             foreach ($array as $item) {
                 if (in_array($item, $arr)) {
-                    $I->see($item, $field . $this->contextMenu);
-                }
-                else {
+                    if (!$I->boolSee($item, $field . $this->contextMenu)) {
+                        $I->comment('Элемент ' . $item . 'не видим.');
+                    }
+                } else {
                     $I->dontSee($item, $field . $this->contextMenu);
                 }
             }
         } else {
             foreach ($arr as $item) {
-                $I->see($item, $field . $this->contextMenu);
+                if (!$I->boolSee($item, $field . $this->contextMenu)) {
+                    $I->comment('Элемент ' . $item . 'не видим.');
+                }
             }
         }
         unset($item);
-        $I->click($field . ' > label');
+        $I->click($this->header);
         $I->wait(1);
     }
 
@@ -169,15 +180,70 @@ class DocumentReception
     public function scrollTo($element)
     {
         $I = $this->tester;
-        if (!$I->boolSeeElement($element)) {
-            $I->moveMouseOver('div.ps__rail-y');
-            $I->clickWithLeftButton(null, 0, 200);
-            $I -> wait(1);
+        $elements = [$this->header, $this->type, $this->ovg, $this->program, $this->FIO, $this->dateOfBorn,
+            $this->bilingual, $this->hasInvalid, $this->invalid, $this->deviant, $this->nameOO,
+            $this->districtOO, $this->chosenProgram, $this->withPsychoSpecial, $this->levelEducation,
+            $this->variantProgram, $this->assistant, $this->freeEnvironment, $this->specialFacilities,
+            $this->tutorEscort, $this->teacherPsy, $this->teacherLogoped, $this->teacherDefect,
+            $this->teacherSocial, $this->timeRepeatInspection];
+        if ($element == $this->header) {
+           for ($i = 0; $i < 3; $i++) {
+               $I->moveMouseOver($this->scroll);
+               $I->clickWithLeftButton(null, 0, -200);
+           }
         }
-        $I->dragAndDrop('div.ps__rail-y', $element);
-        $I->wait(1);
-        $I->click('div.header-section');
-        $I->wait(1);
+        else {
+            $index = array_search($element, $elements);
+            $previousIndex = array_search($this->previousScroll, $elements);
+            if ($index > $previousIndex) {
+                while (!$I->boolSeeElement($element)) {
+                    $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_DOWN);
+                }
+                while ($I->boolSeeElement($element) && !$I->boolSeeElement($this->buttons)) {
+                    $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_DOWN);
+                }
+                $count = 3;
+            } else {
+                while (!$I->boolSeeElement($element)) {
+                    $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_UP);
+                }
+                $count = 2;
+            }
+            for ($i = 0; $i < $count; $i++) {
+                $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_UP);
+            }
+        }
+        $this->previousScroll = $element;
+
+
+
+        /*if ($element == $this->header) {
+            while (!$I->boolSeeElement('div.document-header')) {
+                $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_UP);
+            }
+            $count = 3;
+        }
+        else {
+            while (!$I->boolSeeElement($element) && !$I->boolSeeElement($this->buttons)) {
+                $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_DOWN);
+            }
+            if (!$I->boolSeeElement($element) && $I->boolSeeElement($this->buttons)) {
+                while (!$I->boolSeeElement($element)) {
+                    $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_UP);
+                }
+                $count = 2;
+            }
+            else {
+                while ($I->boolSeeElement($element) && !$I->boolSeeElement($this->buttons)) {
+                    $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_DOWN);
+                }
+                $count = 3;
+            }
+        }
+        for ($i = 0; $i < $count; $i++) {
+            $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_UP);
+        }
+        $this->previousScroll = $element;*/
     }
 
     /**

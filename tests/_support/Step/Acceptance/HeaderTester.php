@@ -1,12 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sbori
- * Date: 08.02.2019
- * Time: 14:01
- */
+namespace Step\Acceptance;
+use \ExceptionWithPsycho;
 
-class HeaderTester extends AcceptanceTester
+class HeaderTester extends \AcceptanceTester
 {
     public function openSection($section, $tab = NULL)
     {
@@ -14,7 +10,7 @@ class HeaderTester extends AcceptanceTester
         {
             case 'Карты детей':
                 $i = 1;
-                $element = 'div.cards';
+                $element = 'div.table.ps > div';
                 break;
             case 'Записи':
                 $i = 2;
