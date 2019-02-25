@@ -182,7 +182,7 @@ class PsychoCest
     public function Test8fillDocumentReceptionPart0(AcceptanceTester $I)
     {
         $documentReception = new DocumentReception($I);
-        $I->moveToServer('Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 0');
+        $I->moveToServer('Тест 8 - Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 0');
         $I->inputInSystem('admin', 'admin');
         $I->waitForElement('div.table.ps > div', 60);
         $I->wait(1);
@@ -206,19 +206,19 @@ class PsychoCest
         $I->waitForElement('div.document-section', 60);
         $I->wait(1);
         $I->seeElement($documentReception->type . ' > label[for="typeText"]');
-        $I->seeElement($documentReception->type . $documentReception->required);
+        $I->seeElement($documentReception->type . $documentReception->requiredField);
         $I->seeElement($documentReception->ovg . ' > label[for="ageGroupId"]');
-        $I->seeElement($documentReception->ovg . $documentReception->required);
+        $I->seeElement($documentReception->ovg . $documentReception->requiredField);
         $I->seeElement($documentReception->program . ' > label[for="programId"]');
-        $I->seeElement($documentReception->program . $documentReception->required);
+        $I->seeElement($documentReception->program . $documentReception->requiredField);
         $I->seeElement($documentReception->FIO . ' > label[for="patientFullName"]');
-        $I->seeElement($documentReception->FIO . $documentReception->required);
+        $I->seeElement($documentReception->FIO . $documentReception->requiredField);
         $I->seeElement($documentReception->dateOfBorn . ' > label[for="dob"]');
-        $I->seeElement($documentReception->dateOfBorn . $documentReception->required);
+        $I->seeElement($documentReception->dateOfBorn . $documentReception->requiredField);
         $I->see('Ребенок с билингвизмом (двуязычием)', $documentReception->bilingual);
         $I->dontSeeCheckboxIsChecked($documentReception->bilingual . ' > label > span:nth-child(3)');
         $I->seeElement($documentReception->invalid . ' > label[for="disabilityText"]');
-        $I->seeElement($documentReception->invalid . $documentReception->required);
+        $I->seeElement($documentReception->invalid . $documentReception->requiredField);
         $I->see('Наличие девиантного поведения', $documentReception->deviant);
         $I->dontSeeCheckboxIsChecked($documentReception->deviant . ' > label > span:nth-child(3)');
         $I->see('Наличие инвалидности', $documentReception->hasInvalid);
@@ -228,7 +228,7 @@ class PsychoCest
         $I->seeElement($documentReception->districtOO . ' > label[for="districtId"]');
         $documentReception->scrollTo($documentReception->withPsychoSpecial);
         $I->seeElement($documentReception->chosenProgram . ' > label[for="programSelectedText"]');
-        $I->seeElement($documentReception->chosenProgram . $documentReception->required);
+        $I->seeElement($documentReception->chosenProgram . $documentReception->requiredField);
         $documentReception->scrollTo($documentReception->header);
         $documentReception->checkingFiledInDocumentReception($documentReception->ovg, 'all');
     }
@@ -236,7 +236,7 @@ class PsychoCest
     public function Test8fillDocumentReceptionPart1(AcceptanceTester $I)
     {
         $dr = new DocumentReception($I);
-        $I->moveToServer('Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 1(Ранняя помощь)');
+        $I->moveToServer('Тест 8 - Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 1(Ранняя помощь)');
         $I->inputInSystem('admin', 'admin');
         $I->waitForElement('div.table.ps > div', 60);
         $I->wait(1);
@@ -271,7 +271,7 @@ class PsychoCest
         $arr = [$dr->programItems[2], $dr->programItems[3], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $dr->scrollTo('div.header-section');
 
@@ -284,7 +284,7 @@ class PsychoCest
         $arr = [$dr->programItems[3], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $dr->scrollTo($dr->header);
 
@@ -297,7 +297,7 @@ class PsychoCest
         $arr = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $dr->scrollTo($dr->header);
 
@@ -310,7 +310,7 @@ class PsychoCest
         $arr = [$dr->programItems[1], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $dr->scrollTo($dr->header);
 
@@ -323,7 +323,7 @@ class PsychoCest
         $arr = [$dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $dr->scrollTo($dr->header);
 
@@ -336,7 +336,7 @@ class PsychoCest
         $arr = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[2], $dr->programItems[3], $dr->programItems[4], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $dr->scrollTo($dr->header);
 
@@ -349,7 +349,7 @@ class PsychoCest
         $arr = [$dr->programItems[1], $dr->programItems[3], $dr->programItems[5], $dr->programItems[7]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $dr->scrollTo($dr->header);
 
@@ -362,7 +362,7 @@ class PsychoCest
         $arr = [$dr->programItems[1], $dr->programItems[3], $dr->programItems[5], $dr->programItems[6], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $dr->scrollTo($dr->header);
 
@@ -375,7 +375,7 @@ class PsychoCest
         $arr = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[2], $dr->programItems[3], $dr->programItems[5], $dr->programItems[7]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $dr->scrollTo($dr->header);
 
@@ -390,7 +390,7 @@ class PsychoCest
         $arr = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[2], $dr->programItems[3], $dr->programItems[5], $dr->programItems[7]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $dr->scrollTo($dr->header);
 
@@ -408,7 +408,7 @@ class PsychoCest
     public function Test9fillDocumentReceptionPart2(AcceptanceTester $I)
     {
         $dr = new DocumentReception($I);
-        $I->moveToServer('Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 2(Дошкольники)');
+        $I->moveToServer('Тест 9 - Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 2(Дошкольники)');
         $I->inputInSystem('admin', 'admin');
         $I->waitForElement('div.table.ps > div', 60);
         $I->wait(1);
@@ -444,10 +444,10 @@ class PsychoCest
         $arr = [$dr->programItems[2], $dr->programItems[3], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1]];
-        $dr->checkingFiledInDocumentReception($dr -> tutorEscort, $arr);
+        $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
         $dr->scrollTo($dr->header);
 
         //Слабослышащие
@@ -459,7 +459,7 @@ class PsychoCest
         $arr = [$dr->programItems[3], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -474,7 +474,7 @@ class PsychoCest
         $arr = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -489,7 +489,7 @@ class PsychoCest
         $arr = [$dr->programItems[1], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -504,7 +504,7 @@ class PsychoCest
         $arr = [$dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -519,7 +519,7 @@ class PsychoCest
         $arr = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[2], $dr->programItems[3], $dr->programItems[4], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -534,7 +534,7 @@ class PsychoCest
         $arr = [$dr->programItems[1], $dr->programItems[3], $dr->programItems[5], $dr->programItems[7]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -549,7 +549,7 @@ class PsychoCest
         $arr = [$dr->programItems[1], $dr->programItems[3], $dr->programItems[5], $dr->programItems[6], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -564,7 +564,7 @@ class PsychoCest
         $arr = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[2], $dr->programItems[3], $dr->programItems[5], $dr->programItems[7]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1], $dr->tutorEscortItems[2], $dr->tutorEscortItems[3], $dr->tutorEscortItems[4]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -579,7 +579,7 @@ class PsychoCest
         $arr = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[2], $dr->programItems[3], $dr->programItems[5], $dr->programItems[7]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1], $dr->tutorEscortItems[2], $dr->tutorEscortItems[3], $dr->tutorEscortItems[4]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -599,7 +599,7 @@ class PsychoCest
     public function Test10fillDocumentReceptionPart3(AcceptanceTester $I)
     {
         $dr = new DocumentReception($I);
-        $I->moveToServer('Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 3(СОШ)');
+        $I->moveToServer('Тест 10 - Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 3(СОШ)');
         $I->inputInSystem('admin', 'admin');
         $I->waitForElement('div.table.ps > div', 60);
         $I->wait(1);
@@ -634,9 +634,9 @@ class PsychoCest
         //$I -> see('Адаптированная основная образовательная программа для обучающихся со сложными дефектами', 'div.document-section__row:nth-child(6)');
         $arr = [$dr->programItems[2], $dr->programItems[3], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
-        $dr->checkingFiledInDocumentReception($dr -> levelEducation, 'all');
+        $dr->checkingFiledInDocumentReception($dr->levelEducation, 'all');
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[0], $dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -650,9 +650,9 @@ class PsychoCest
         //$I -> see('Адаптированная основная образовательная программа для слабослышащих обучающихся', 'div.document-section__row:nth-child(6)');
         $arr = [$dr->programItems[3], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
-        $dr->checkingFiledInDocumentReception($dr -> levelEducation, 'all');
+        $dr->checkingFiledInDocumentReception($dr->levelEducation, 'all');
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[0], $dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -666,9 +666,9 @@ class PsychoCest
         //$I -> see('Адаптированная основная образовательная программа для слепых обучающихся', 'div.document-section__row:nth-child(6)');
         $arr = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
-        $dr->checkingFiledInDocumentReception($dr -> levelEducation, 'all');
+        $dr->checkingFiledInDocumentReception($dr->levelEducation, 'all');
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[0], $dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -682,9 +682,9 @@ class PsychoCest
         //$I -> see('Адаптированная основная образовательная программа для слабовидящих обучающихся', 'div.document-section__row:nth-child(6)');
         $arr = [$dr->programItems[1], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
-        $dr->checkingFiledInDocumentReception($dr -> levelEducation, 'all');
+        $dr->checkingFiledInDocumentReception($dr->levelEducation, 'all');
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[0], $dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -699,9 +699,9 @@ class PsychoCest
         $arr = [$dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $arr = [$dr->levelEducationItems[0], $dr->levelEducationItems[1], $dr->levelEducationItems[3]];
-        $dr->checkingFiledInDocumentReception($dr -> levelEducation, $arr);
+        $dr->checkingFiledInDocumentReception($dr->levelEducation, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -715,7 +715,7 @@ class PsychoCest
         //$I -> see('Адаптированная основная образовательная программа для обучающихся с нарушением опорно-двигательного аппарата', 'div.document-section__row:nth-child(6)');
         $arr = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[2], $dr->programItems[3], $dr->programItems[4], $dr->programItems[6], $dr->programItems[7], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
-        $dr->checkingFiledInDocumentReception($dr -> levelEducation, 'empty');
+        $dr->checkingFiledInDocumentReception($dr->levelEducation, 'empty');
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[0], $dr->tutorEscortItems[1]];
@@ -731,9 +731,9 @@ class PsychoCest
         $arr = [$dr->programItems[1], $dr->programItems[3], $dr->programItems[5], $dr->programItems[7]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $arr = [$dr->levelEducationItems[0], $dr->levelEducationItems[1], $dr->levelEducationItems[3]];
-        $dr->checkingFiledInDocumentReception($dr -> levelEducation, $arr);
+        $dr->checkingFiledInDocumentReception($dr->levelEducation, $arr);
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[0], $dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -747,9 +747,9 @@ class PsychoCest
         //$I -> see('Адаптированная основная образовательная программа для обучающихся с расстройствами аутистического спектра', 'div.document-section__row:nth-child(6)');
         $arr = [$dr->programItems[1], $dr->programItems[3], $dr->programItems[5], $dr->programItems[6], $dr->programItems[8]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
-        $dr->checkingFiledInDocumentReception($dr -> levelEducation, 'all');
+        $dr->checkingFiledInDocumentReception($dr->levelEducation, 'all');
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[0], $dr->tutorEscortItems[1]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -763,9 +763,9 @@ class PsychoCest
         //$I -> see('Адаптированная основная образовательная программа для обучающихся с умственной отсталостью', 'div.document-section__row:nth-child(6)');
         $arr = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[2], $dr->programItems[3], $dr->programItems[5], $dr->programItems[7]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
-        $dr->checkingFiledInDocumentReception($dr -> levelEducation, 'empty');
+        $dr->checkingFiledInDocumentReception($dr->levelEducation, 'empty');
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1], $dr->tutorEscortItems[2], $dr->tutorEscortItems[3], $dr->tutorEscortItems[4]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -779,9 +779,9 @@ class PsychoCest
         //$I -> see('Адаптированная основная образовательная программа для обучающихся со сложными дефектами', 'div.document-section__row:nth-child(6)');
         $arr = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[2], $dr->programItems[3], $dr->programItems[5], $dr->programItems[7]];
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
-        $dr->checkingFiledInDocumentReception($dr -> levelEducation, 'empty');
+        $dr->checkingFiledInDocumentReception($dr->levelEducation, 'empty');
         $dr->checkingFiledInDocumentReception($dr->assistant, 'all');
-        $I->seeElement($dr->specialFacilities . $dr->required);
+        $I->seeElement($dr->specialFacilities . $dr->requiredField);
         $dr->checkingFiledInDocumentReception($dr->specialFacilities, 'all');
         $arr = [$dr->tutorEscortItems[1], $dr->tutorEscortItems[2], $dr->tutorEscortItems[3], $dr->tutorEscortItems[4]];
         $dr->checkingFiledInDocumentReception($dr->tutorEscort, $arr);
@@ -801,7 +801,7 @@ class PsychoCest
     public function Test11fillDocumentReceptionPart4(AcceptanceTester $I)
     {
         $dr = new DocumentReception($I);
-        $I->moveToServer('Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 4(ФГОС НОО ОВЗ, ФГОС УО)');
+        $I->moveToServer('Тест 11 - Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 4(ФГОС НОО ОВЗ, ФГОС УО)');
         $I->inputInSystem('admin', 'admin');
         $I->waitForElement('div.table.ps > div', 60);
         $I->wait(1);
@@ -838,7 +838,7 @@ class PsychoCest
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $I->seeElement('div.document-section__row:nth-child(10) > div.document-item:nth-child(1) > label > span > span.document-item__title-required');
         $arr = ['Вариант 1.1', 'Вариант 1.2', 'Вариант 1.3', 'Вариант 1.4'];
-        $dr->checkingFiledInDocumentReception($dr -> variantProgram, $arr);
+        $dr->checkingFiledInDocumentReception($dr->variantProgram, $arr);
 
         //Выбираем "Вариант 1.1"
         $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 1.1');
@@ -873,7 +873,7 @@ class PsychoCest
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $I->seeElement('div.document-section__row:nth-child(10) > div.document-item:nth-child(1) > label > span > span.document-item__title-required');
         $arr = ['Вариант 2.1', 'Вариант 2.2 (I отделение)', 'Вариант 2.2 (II Отделение)', 'Вариант 2.3'];
-        $dr->checkingFiledInDocumentReception($dr -> variantProgram, $arr);
+        $dr->checkingFiledInDocumentReception($dr->variantProgram, $arr);
 
         //Выбираем "Вариант 2.1"
         $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 2.1');
@@ -907,7 +907,7 @@ class PsychoCest
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $I->seeElement('div.document-section__row:nth-child(10) > div.document-item:nth-child(1) > label > span > span.document-item__title-required');
         $arr = ['Вариант 3.1', 'Вариант 3.2', 'Вариант 3.3', 'Вариант 3.4'];
-        $dr->checkingFiledInDocumentReception($dr -> variantProgram, $arr);
+        $dr->checkingFiledInDocumentReception($dr->variantProgram, $arr);
 
         //Выбираем "Вариант 3.1"
         $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 3.1');
@@ -942,7 +942,7 @@ class PsychoCest
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $I->seeElement('div.document-section__row:nth-child(10) > div.document-item:nth-child(1) > label > span > span.document-item__title-required');
         $arr = ['Вариант 4.1', 'Вариант 4.2', 'Вариант 4.3'];
-        $dr->checkingFiledInDocumentReception($dr -> variantProgram, $arr);
+        $dr->checkingFiledInDocumentReception($dr->variantProgram, $arr);
 
         //Выбираем "Вариант 4.1"
         $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 4.1');
@@ -971,7 +971,7 @@ class PsychoCest
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $I->seeElement('div.document-section__row:nth-child(10) > div.document-item:nth-child(1) > label > span > span.document-item__title-required');
         $arr = ['Вариант 5.1', 'Вариант 5.2 (I отделение)', 'Вариант 5.2 (II отделение)'];
-        $dr->checkingFiledInDocumentReception($dr -> variantProgram, $arr);
+        $dr->checkingFiledInDocumentReception($dr->variantProgram, $arr);
 
         //Выбираем "Вариант 5.1"
         $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 5.1');
@@ -999,7 +999,7 @@ class PsychoCest
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $I->seeElement('div.document-section__row:nth-child(10) > div.document-item:nth-child(1) > label > span > span.document-item__title-required');
         $arr = ['Вариант 6.1', 'Вариант 6.2', 'Вариант 6.3', 'Вариант 6.4'];
-        $dr->checkingFiledInDocumentReception($dr -> variantProgram, $arr);
+        $dr->checkingFiledInDocumentReception($dr->variantProgram, $arr);
 
         //Вариант 6.1
         $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 6.1');
@@ -1034,7 +1034,7 @@ class PsychoCest
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $I->seeElement('div.document-section__row:nth-child(10) > div.document-item:nth-child(1) > label > span > span.document-item__title-required');
         $arr = ['Вариант 7.1', 'Вариант 7.2'];
-        $dr->checkingFiledInDocumentReception($dr -> variantProgram, $arr);
+        $dr->checkingFiledInDocumentReception($dr->variantProgram, $arr);
 
         //Вариант 7.1
         $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 7.1');
@@ -1057,7 +1057,7 @@ class PsychoCest
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $I->seeElement('div.document-section__row:nth-child(10) > div.document-item:nth-child(1) > label > span > span.document-item__title-required');
         $arr = ['Вариант 8.1', 'Вариант 8.2', 'Вариант 8.3', 'Вариант 8.4'];
-        $dr->checkingFiledInDocumentReception($dr -> variantProgram, $arr);
+        $dr->checkingFiledInDocumentReception($dr->variantProgram, $arr);
 
         //Вариант 8.1
         $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 8.1');
@@ -1092,7 +1092,7 @@ class PsychoCest
         $dr->checkingFiledInDocumentReception($dr->withPsychoSpecial, $arr);
         $I->seeElement('div.document-section__row:nth-child(10) > div.document-item:nth-child(1) > label > span > span.document-item__title-required');
         $arr = ['Вариант 1', 'Вариант 2'];
-        $dr->checkingFiledInDocumentReception($dr -> variantProgram, $arr);
+        $dr->checkingFiledInDocumentReception($dr->variantProgram, $arr);
 
         //Вариант 1
         $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 1');
@@ -1111,7 +1111,7 @@ class PsychoCest
     public function Test12fillDocumentReceptionPart5(AcceptanceTester $I)
     {
         $dr = new DocumentReception($I);
-        $I->moveToServer('Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 5(СПО)');
+        $I->moveToServer('Тест 12 - Заполнение документа приёма (Обследование, Тип приёма - Ранняя помощь, ОВГ, Программа) - Часть 5(СПО)');
         $I->inputInSystem('admin', 'admin');
         $I->waitForElement('div.table.ps > div', 60);
         $I->wait(1);
@@ -1215,7 +1215,7 @@ class PsychoCest
     {
         $dr = new DocumentReception($I);
         $monthsOfYears = ['янв', 'февр', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сент', 'окт', 'нояб', 'дек'];
-        $I->moveToServer('Тест 9 - Заполнение документа приёма (Обследование, ФИО, Дата рождния, Наименование ОО, Округ ОО))');
+        $I->moveToServer('Тест 13 - Заполнение документа приёма (Обследование, ФИО, Дата рождния, Наименование ОО, Округ ОО))');
         $I->inputInSystem('admin', 'admin');
         $I->waitForElement('div.table.ps > div', 30);
         $I->wait(1);
@@ -1245,16 +1245,16 @@ class PsychoCest
         $I->wait(1);
         //$I -> see($namePatient, 'div.document-section__row:nth-child(5) > div.document-item:nth-child(1)');
         //$I -> see($dateOfBornPatient, 'div.document-section__row:nth-child(5) > div.document-item:nth-child(2)');
-        $I->seeElement($dr -> bilingual . ' > label[for="bilingual"]');
-        $I->seeElement($dr -> deviant . ' > label[for="deviant"]');
-        $dr -> scrollTo($dr -> nameOO);
+        $I->seeElement($dr->bilingual . ' > label[for="bilingual"]');
+        $I->seeElement($dr->deviant . ' > label[for="deviant"]');
+        $dr->scrollTo($dr->nameOO);
         $dr->checkingFiledInDocumentReception('Наименование ОО', 'all');
         $I->click('div.document-section__row:nth-child(7) > div.document-item:nth-child(1) > div.document-item__row');
         $I->wait(1);
         foreach ($dr->nameOOItems as $item) {
             $I->fillField('#educationOrgId', $item);
             $I->wait(1);
-            $I->see($item, $dr -> nameOO);
+            $I->see($item, $dr->nameOO);
             $I->wait(1);
         }
         unset($item);
@@ -1264,7 +1264,7 @@ class PsychoCest
     public function Test14DirectionCorrectorWorkPart1(AcceptanceTester $I)
     {
         $dr = new DocumentReception($I);
-        $I->moveToServer('Тест 10 - Заполнение документа приёма (Направление коррекционной работы) - Ранняя помощь');
+        $I->moveToServer('Тест 14 - Заполнение документа приёма (Направление коррекционной работы) - Ранняя помощь');
         $I->inputInSystem('admin', 'admin');
         $I->waitForElement('div.table.ps > div', 30);
         $I->wait(1);
@@ -1485,7 +1485,7 @@ class PsychoCest
     public function Test15DirectionCorrectorWorkPart2(HeaderTester $I)
     {
         $dr = new DocumentReception($I);
-        $I->moveToServer('Тест 11 - Заполнение документа приёма (Направление коррекционной работы) - Дошкольники');
+        $I->moveToServer('Тест 15 - Заполнение документа приёма (Направление коррекционной работы) - Дошкольники');
         $I->inputInSystem('admin', 'admin');
         $I->openSection('Карты детей');
         $count = $I->getQuantityElement('div.table.ps > div', 4);
@@ -1715,7 +1715,7 @@ class PsychoCest
     public function Test16DirectionCorrectorWorkPart3(HeaderTester $I)
     {
         $dr = new DocumentReception($I);
-        $I->moveToServer('Тест 12 - Заполнение документа приёма (Направление коррекционной работы) - ФГОС');
+        $I->moveToServer('Тест 16 - Заполнение документа приёма (Направление коррекционной работы) - ФГОС');
         $I->inputInSystem('admin', 'admin');
         $I->openSection('Карты детей');
         $count = $I->getQuantityElement('div.table.ps > div', 4);
@@ -1809,7 +1809,7 @@ class PsychoCest
     public function Test17DirectionCorrectorWorkPart4(HeaderTester $I)
     {
         $dr = new DocumentReception($I);
-        $I->moveToServer('Тест 13 - Заполнение документа приёма (Направление коррекционной работы) - СОШ');
+        $I->moveToServer('Тест 17 - Заполнение документа приёма (Направление коррекционной работы) - СОШ');
         $I->inputInSystem('admin', 'admin');
         $I->openSection('Карты детей');
         $count = $I->getQuantityElement('div.table.ps > div', 4);
@@ -1898,7 +1898,7 @@ class PsychoCest
     public function Test18DirectionCorrectorWorkPart5(HeaderTester $I)
     {
         $dr = new DocumentReception($I);
-        $I->moveToServer('Тест 14 - Заполнение документа приёма (Направление коррекционной работы) - СПО');
+        $I->moveToServer('Тест 18 - Заполнение документа приёма (Направление коррекционной работы) - СПО');
         $I->inputInSystem('admin', 'admin');
         $I->openSection('Карты детей');
         $count = $I->getQuantityElement('div.table.ps > div', 4);
@@ -1977,5 +1977,623 @@ class PsychoCest
         $dr->scrollTo($dr->teacherSocial);
         $arr = [$dr->teacherSocialItems[0], $dr->teacherSocialItems[3], $dr->teacherSocialItems[4]];
         $dr->checkingFiledInDocumentReception($dr->teacherSocial, $arr);
+    }
+
+    public function Test19DirectionCorrectorWorkPart6(HeaderTester $I)
+    {
+        $dr = new DocumentReception($I);
+        $I->moveToServer('Тест 19 - Заполнение документа приёма (Направление коррекционной работы, срок, вид и результат комиссии) - Ранняя помощь');
+        $I->inputInSystem('admin', 'admin');
+        $I->openSection('Карты детей');
+        $count = $I->getQuantityElement('div.table.ps > div', 4);
+        for ($i = 4; $i <= $count; $i++) {
+            $I->moveMouseOver('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div');
+            $I->wait(1);
+            $status = $I->grabTextFrom('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div > div.cards-status > div.tooltip.tooltip--left > div');
+            if ($status == 'Документ не заполнен') break;
+        }
+        $I->wait(1);
+        $I->click('div.cell.cell--status > div', 'div.table.ps > div:nth-child(' . $i . ') > div.row');
+        $I->waitForElement('div.popup', 10);
+        $I->wait(1);
+        $I->click('div.popup > form > label:nth-child(1)');
+        $I->wait(1);
+        $I->click('a.button-orange', 'div.popup');
+        $I->waitForElement('div.document', 60);
+        $I->waitForElement('div.content', 60);
+        $I->waitForElement('div.document-section', 60);
+        $I->wait(1);
+
+        //Выбираем "Ранняя помощь"
+        $dr->setValueFieldInDocumentReception($dr->ovg, $dr->programItems[0]);
+        //Проверяем все программы
+        foreach ($dr->programItems as $program) {
+            $dr->setValueFieldInDocumentReception($dr->program, $program);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $I->seeElement($dr->recommendedInspection);
+            $I->dontSeeCheckboxIsChecked($dr->recommendedInspection . $dr->bodyCheckbox);
+            $I->dontSeeCheckboxIsChecked($dr->incompleteDocumentation . $dr->bodyCheckbox);
+            $arr = ['По достижении трёх летнего возраста'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+            $dr->scrollTo(($dr->header));
+        }
+        unset($program);
+    }
+
+    public function Test20DirectionCorrectorWorkPart7(HeaderTester $I)
+    {
+        $dr = new DocumentReception($I);
+        $I->moveToServer('Тест 20 - Заполнение документа приёма (Направление коррекционной работы, срок, вид и результат комиссии) - Дошкольники');
+        $I->inputInSystem('admin', 'admin');
+        $I->openSection('Карты детей');
+        $count = $I->getQuantityElement('div.table.ps > div', 4);
+        for ($i = 4; $i <= $count; $i++) {
+            $I->moveMouseOver('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div');
+            $I->wait(1);
+            $status = $I->grabTextFrom('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div > div.cards-status > div.tooltip.tooltip--left > div');
+            if ($status == 'Документ не заполнен') break;
+        }
+        $I->wait(1);
+        $I->click('div.cell.cell--status > div', 'div.table.ps > div:nth-child(' . $i . ') > div.row');
+        $I->waitForElement('div.popup', 10);
+        $I->wait(1);
+        $I->click('div.popup > form > label:nth-child(1)');
+        $I->wait(1);
+        $I->click('a.button-orange', 'div.popup');
+        $I->waitForElement('div.document', 60);
+        $I->waitForElement('div.content', 60);
+        $I->waitForElement('div.document-section', 60);
+        $I->wait(1);
+
+        //Выбираем "Дошкольники"
+        $dr->setValueFieldInDocumentReception($dr->ovg, $dr->ovgItems[1]);
+        //Проверяем все программы
+        foreach ($dr->programItems as $program) {
+            $dr->scrollTo($dr->program);
+            $dr->setValueFieldInDocumentReception($dr->program, $program);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $I->seeElement($dr->recommendedInspection);
+            $I->dontSeeCheckboxIsChecked($dr->recommendedInspection . $dr->bodyCheckbox);
+            $I->dontSeeCheckboxIsChecked($dr->incompleteDocumentation . $dr->bodyCheckbox);
+            if ($program == $dr->programItems[10]) {
+                $arr = ['При переходе с одного уровня образования на другой'];
+            } else {
+                $arr = ['Изменение ранее данных комиссией рекомендаций при устойчивых трудностях овладения АООП',
+                    'При переходе с одного уровня образования на другой'];
+            }
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+            $dr->scrollTo(($dr->header));
+        }
+        unset($program);
+    }
+
+    public function Test21DirectionCorrectorWorkPart8(HeaderTester $I)
+    {
+        $dr = new DocumentReception($I);
+        $I->moveToServer('Тест 21 - Заполнение документа приёма (Направление коррекционной работы, срок, вид и результат комиссии) - ФГОС');
+        $I->inputInSystem('admin', 'admin');
+        $I->openSection('Карты детей');
+        $count = $I->getQuantityElement('div.table.ps > div', 4);
+        for ($i = 4; $i <= $count; $i++) {
+            $I->moveMouseOver('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div');
+            $I->wait(1);
+            $status = $I->grabTextFrom('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div > div.cards-status > div.tooltip.tooltip--left > div');
+            if ($status == 'Документ заполнен') {
+                $type = $I->grabTextFrom('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--type-visit > div > span');
+                if ($type == 'Обследование') break;
+            }
+        }
+        $I->wait(1);
+        $I->click('div.cell.cell--status > div', 'div.table.ps > div:nth-child(' . $i . ') > div.row');
+        /*$I->waitForElement('div.popup', 10);
+        $I->wait(1);
+        $I->click('div.popup > form > label:nth-child(1)');
+        $I->wait(1);
+        $I->click('a.button-orange', 'div.popup');*/
+        $I->waitForElement('div.document', 60);
+        $I->waitForElement('div.content', 60);
+        $I->waitForElement('div.document-section', 60);
+        $I->wait(1);
+
+        //Устанавливаем ФГОС
+        $dr->setValueFieldInDocumentReception($dr->ovg, $dr->ovgItems[2]);
+
+        //Глухие
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, $dr->programItems[0]);
+        //Вариант 1.1 - 1.2
+        $variants = ['Вариант 1.1', 'Вариант 1.2'];
+        foreach ($variants as $variant) {
+            $I->comment('Проверка ' . $variant);
+            $dr->scrollTo($dr->variantProgram);
+            $dr->setValueFieldInDocumentReception($dr->variantProgram, $variant);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $arr = ['Изменение программы при устойчивой неуспеваемости по нескольким предметам',
+                'Изменение программы при устойчивой неуспеваемости по нескольким предметам - 
+             не позже, чем через год после освоения АООП',
+                'При переходе с одного уровня образования на другой',
+                'Уточнение ранее данный комиссией рекомендаций при устойчивых трудностях овладения
+            рекомендованным вариантом АООП - в течение следующего учебного года'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($variant);
+
+        //Вариант 1.3 - 1.4
+        $variants = ['Вариант 1.3', 'Вариант 1.4'];
+        foreach ($variants as $variant) {
+            $I->comment('Проверка ' . $variant);
+            $dr->scrollTo($dr->variantProgram);
+            $dr->setValueFieldInDocumentReception($dr->variantProgram, $variant);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $arr = ['На весь период обучения',
+                'При переходе с одного уровня образования на другой'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($variant);
+
+        //Слабослышащие
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, $dr->programItems[1]);
+
+        //Вариант 2.1
+        $variants = ['Вариант 2.1', 'Вариант 2.2 (I отделение)', 'Вариант 2.2 (II отделение)'];
+        foreach ($variants as $variant) {
+            $I->comment('Проверка ' . $variant);
+            $dr->scrollTo($dr->variantProgram);
+            $dr->setValueFieldInDocumentReception($dr->variantProgram, $variant);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $arr = ['Изменение программы при устойчивой неуспеваемости по нескольким предметам',
+                'Изменение программы при устойчивой неуспеваемости по нескольким предметам - 
+             не позже, чем через год после освоения АООП',
+                'При переходе с одного уровня образования на другой',
+                'Уточнение ранее данный комиссией рекомендаций при устойчивых трудностях овладения
+            рекомендованным вариантом АООП - в течение следующего учебного года'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($variant);
+
+        //Вариант 2.3
+        $I->comment('Проверка Вариант 2.3');
+        $dr->scrollTo($dr->variantProgram);
+        $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 2.3');
+        $dr->scrollTo($dr->timeRepeatInspection);
+        $arr = ['На весь период обучения',
+            'При переходе с одного уровня образования на другой'];
+        $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+        $I->seeElement($dr->kindCommission . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+        $I->seeElement($dr->resultCommission . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+
+        //Слепые
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, $dr->programItems[2]);
+
+        //Вариант 3.1 - 3.2
+        $variants = ['Вариант 3.1', 'Вариант 3.2'];
+        foreach ($variants as $variant) {
+            $I->comment('Проверка ' . $variant);
+            $dr->scrollTo($dr->variantProgram);
+            $dr->setValueFieldInDocumentReception($dr->variantProgram, $variant);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $arr = ['Изменение программы при устойчивой неуспеваемости по нескольким предметам',
+                'Изменение программы при устойчивой неуспеваемости по нескольким предметам - 
+             не позже, чем через год после освоения АООП',
+                'При переходе с одного уровня образования на другой',
+                'Уточнение ранее данный комиссией рекомендаций при устойчивых трудностях овладения
+            рекомендованным вариантом АООП - в течение следующего учебного года'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($variant);
+
+        //Вариант 3.3 - 3.4
+        $variants = ['Вариант 3.3', 'Вариант 3.4'];
+        foreach ($variants as $variant) {
+            $I->comment('Проверка ' . $variant);
+            $dr->scrollTo($dr->variantProgram);
+            $dr->setValueFieldInDocumentReception($dr->variantProgram, $variant);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $arr = ['На весь период обучения',
+                'При переходе с одного уровня образования на другой'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($variant);
+
+        //Слабовидящие
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, $dr->programItems[3]);
+
+        //Вариант 4.1 - 4.2
+        $variants = ['Вариант 4.1', 'Вариант 4.2'];
+        foreach ($variants as $variant) {
+            $I->comment('Проверка ' . $variant);
+            $dr->scrollTo($dr->variantProgram);
+            $dr->setValueFieldInDocumentReception($dr->variantProgram, $variant);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $arr = ['Изменение программы при устойчивой неуспеваемости по нескольким предметам',
+                'Изменение программы при устойчивой неуспеваемости по нескольким предметам - 
+             не позже, чем через год после освоения АООП',
+                'При переходе с одного уровня образования на другой',
+                'Уточнение ранее данный комиссией рекомендаций при устойчивых трудностях овладения
+            рекомендованным вариантом АООП - в течение следующего учебного года'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($variant);
+
+        //Вариант 4.3
+        $I->comment('Проверка Вариант 4.3');
+        $dr->scrollTo($dr->variantProgram);
+        $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 4.3');
+        $dr->scrollTo($dr->timeRepeatInspection);
+        $arr = ['На весь период обучения',
+            'При переходе с одного уровня образования на другой'];
+        $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+        $I->seeElement($dr->kindCommission . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+        $I->seeElement($dr->resultCommission . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+
+        //Тяжелые нарушения речи
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, $dr->programItems[4]);
+
+        //Вариант 5.1
+        $I->comment('Проверка Вариант 5.1');
+        $dr->scrollTo($dr->variantProgram);
+        $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 5.1');
+        $dr->scrollTo($dr->timeRepeatInspection);
+        $arr = ['Изменение программы при компенсации речевых нарушений - через год после начала освоения АООП',
+            'Изменение программы при устойчивой неуспеваемости по нескольким предметам',
+            'Изменение программы при устойчивой неуспеваемости по нескольким предметам - 
+             не позже, чем через год после освоения АООП',
+            'При переходе с одного уровня образования на другой',
+            'Уточнение ранее данный комиссией рекомендаций при устойчивых трудностях овладения
+            рекомендованным вариантом АООП - в течение следующего учебного года'];
+        $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+        $I->seeElement($dr->kindCommission . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+        $I->seeElement($dr->resultCommission . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+
+        //Варианты 5.2 - 5.3
+        $variants = ['Вариант 5.2 (I отделение)', 'Вариант 5.2 (II отделение)'];
+        foreach ($variants as $variant) {
+            $I->comment('Проверка ' . $variant);
+            $dr->scrollTo($dr->variantProgram);
+            $dr->setValueFieldInDocumentReception($dr->variantProgram, $variant);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $arr = ['Изменение программы при устойчивой неуспеваемости по нескольким предметам',
+                'Изменение программы при устойчивой неуспеваемости по нескольким предметам - 
+             не позже, чем через год после освоения АООП',
+                'При переходе с одного уровня образования на другой',
+                'Уточнение ранее данный комиссией рекомендаций при устойчивых трудностях овладения
+            рекомендованным вариантом АООП - в течение следующего учебного года'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($variant);
+
+        //Нарушения опорно-двигательного аппарата
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, $dr->programItems[5]);
+
+        //Вариант 6.1 - 6.2
+        $variants = ['Вариант 6.1', 'Вариант 6.2'];
+        foreach ($variants as $variant) {
+            $I->comment('Проверка ' . $variant);
+            $dr->scrollTo($dr->variantProgram);
+            $dr->setValueFieldInDocumentReception($dr->variantProgram, $variant);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $arr = ['Изменение программы при устойчивой неуспеваемости по нескольким предметам',
+                'Изменение программы при устойчивой неуспеваемости по нескольким предметам - 
+             не позже, чем через год после освоения АООП',
+                'При переходе с одного уровня образования на другой',
+                'Уточнение ранее данный комиссией рекомендаций при устойчивых трудностях овладения
+            рекомендованным вариантом АООП - в течение следующего учебного года'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($variant);
+
+        //Вариант 6.3 - 6.4
+        $variants = ['Вариант 6.3', 'Вариант 6.4'];
+        foreach ($variants as $variant) {
+            $I->comment('Проверка ' . $variant);
+            $dr->scrollTo($dr->variantProgram);
+            $dr->setValueFieldInDocumentReception($dr->variantProgram, $variant);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $arr = ['На весь период обучения',
+                'При переходе с одного уровня образования на другой'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($variant);
+
+        //Задержка психического развития
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, $dr->programItems[6]);
+
+        //Вариант 7.1 - 7.2
+        $variants = ['Вариант 7.1', 'Вариант 7.2'];
+        foreach ($variants as $variant) {
+            $I->comment('Проверка ' . $variant);
+            $dr->scrollTo($dr->variantProgram);
+            $dr->setValueFieldInDocumentReception($dr->variantProgram, $variant);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $arr = ['Изменение программы при устойчивой неуспеваемости по нескольким предметам',
+                'Изменение программы при устойчивой неуспеваемости по нескольким предметам - 
+             не позже, чем через год после освоения АООП',
+                'При переходе с одного уровня образования на другой',
+                'Уточнение ранее данный комиссией рекомендаций при устойчивых трудностях овладения
+            рекомендованным вариантом АООП - в течение следующего учебного года'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($variant);
+
+        //Расстройство аутистического спектра
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, $dr->programItems[7]);
+
+        //Вариант 8.1 - 8.2
+        $variants = ['Вариант 8.1', 'Вариант 8.2'];
+        foreach ($variants as $variant) {
+            $I->comment('Проверка ' . $variant);
+            $dr->scrollTo($dr->variantProgram);
+            $dr->setValueFieldInDocumentReception($dr->variantProgram, $variant);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $arr = ['Изменение программы при устойчивой неуспеваемости по нескольким предметам',
+                'Изменение программы при устойчивой неуспеваемости по нескольким предметам - 
+             не позже, чем через год после освоения АООП',
+                'При переходе с одного уровня образования на другой',
+                'Уточнение ранее данный комиссией рекомендаций при устойчивых трудностях овладения
+            рекомендованным вариантом АООП - в течение следующего учебного года'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($variant);
+
+        //Вариант 8.3 - 8.4
+        $variants = ['Вариант 8.3', 'Вариант 8.4'];
+        foreach ($variants as $variant) {
+            $I->comment('Проверка ' . $variant);
+            $dr->scrollTo($dr->variantProgram);
+            $dr->setValueFieldInDocumentReception($dr->variantProgram, $variant);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            $arr = ['На весь период обучения',
+                'При переходе с одного уровня образования на другой'];
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($variant);
+
+        //Умственная отсталость
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, $dr->programItems[8]);
+
+        //Вариант 1
+        $I->comment('Проверка Вариант 1');
+        $dr->scrollTo($dr->variantProgram);
+        $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 1');
+        $dr->scrollTo($dr->timeRepeatInspection);
+        $arr = ['При переходе с одного уровня образования на другой',
+            'Уточнение ранее данных комиссией рекомендаций при устойчивых 
+            трудностях овладения рекомендованным вариант АООП'];
+        $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+        $I->seeElement($dr->kindCommission . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+        $I->seeElement($dr->resultCommission . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+
+        //Вариант 2
+        $I->comment('Проверка Вариант 2');
+        $dr->scrollTo($dr->variantProgram);
+        $dr->setValueFieldInDocumentReception($dr->variantProgram, 'Вариант 2');
+        $dr->scrollTo($dr->timeRepeatInspection);
+        $arr = ['При переходе с одного уровня образования на другой'];
+        $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+        $I->seeElement($dr->kindCommission . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+        $I->seeElement($dr->resultCommission . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+    }
+
+    public function Test22DirectionCorrectorWorkPart9(HeaderTester $I)
+    {
+        $dr = new DocumentReception($I);
+        $I->moveToServer('Тест 22 - Заполнение документа приёма (Направление коррекционной работы, срок, вид и результат комиссии) - СОШ');
+        $I->inputInSystem('admin', 'admin');
+        $I->openSection('Карты детей');
+        $count = $I->getQuantityElement('div.table.ps > div', 4);
+        for ($i = 4; $i <= $count; $i++) {
+            $I->moveMouseOver('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div');
+            $I->wait(1);
+            $status = $I->grabTextFrom('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div > div.cards-status > div.tooltip.tooltip--left > div');
+            if ($status == 'Документ заполнен') {
+                $type = $I->grabTextFrom('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--type-visit > div > span');
+                if ($type == 'Обследование') break;
+            }
+        }
+        $I->wait(1);
+        $I->click('div.cell.cell--status > div', 'div.table.ps > div:nth-child(' . $i . ') > div.row');
+        /*$I->waitForElement('div.popup', 10);
+        $I->wait(1);
+        $I->click('div.popup > form > label:nth-child(1)');
+        $I->wait(1);
+        $I->click('a.button-orange', 'div.popup');*/
+        $I->waitForElement('div.document', 60);
+        $I->waitForElement('div.content', 60);
+        $I->waitForElement('div.document-section', 60);
+        $I->wait(1);
+
+        //Выбираем СОШ
+        $dr->setValueFieldInDocumentReception($dr->ovg, $dr->ovgItems[3]);
+
+        //Программы Глухие - Сложные дефекты
+        $programs = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[2], $dr->programItems[3],
+            $dr->programItems[4], $dr->programItems[5], $dr->programItems[6], $dr->programItems[7],
+            $dr->programItems[8], $dr->programItems[9]];
+        foreach ($programs as $program) {
+            $I->comment('Проверка ' . $program);
+            $dr->scrollTo($dr->program);
+            $dr->setValueFieldInDocumentReception($dr->program, $program);
+            $dr->scrollTo($dr->timeRepeatInspection);
+            if ($program == $dr->programItems[8]) {
+                $arr = ['Изменение программы при устойчивой неуспеваемости по нескольким предметам',
+                    'На весь период обучения', 'При переходе с одного уровня образования на другой',
+                    'Рекомендовано повторное прохождение ЦПМПК с целью создания специальных условий
+                при сдаче ГИА за курс основного общего образования',
+                    'Рекомендовано повторное прохождение ЦПМПК с целью создания специальных условий
+                при сдаче ГИА за курс среднего общего образования'];
+            } else {
+                $arr = ['Изменение программы при устойчивой неуспеваемости по нескольким предметам',
+                    'При переходе с одного уровня образования на другой',
+                    'Рекомендовано повторное прохождение ЦПМПК с целью создания специальных условий
+                при сдаче ГИА за курс основного общего образования',
+                    'Рекомендовано повторное прохождение ЦПМПК с целью создания специальных условий
+                при сдаче ГИА за курс среднего общего образования'];
+            }
+            $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($program);
+
+        //Основная образовательная программа(норма)
+        $I->comment('Проверка Основная образовательная программа(норма)');
+        $dr->scrollTo($dr->program);
+        $dr->setValueFieldInDocumentReception($dr->program, 'Основная образовательная программа(норма)');
+        $dr->scrollTo($dr->timeRepeatInspection);
+        $arr = ['При переходе с одного уровня образования на другой',
+            '(строго по согласованию!) Изменение ранее данных комиссией рекомендаций при 
+            устойчивых трудностях освоения ООП'];
+        $I->seeElement($dr->timeRepeatInspection . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->timeRepeatInspection, $arr);
+        $I->seeElement($dr->kindCommission . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+        $I->seeElement($dr->resultCommission . $dr->requiredField);
+        $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        $I->seeElement($dr->personalPlan);
+        $arr = ['Не требуется', '(строго по согласованию!) Обучение по индивидуальному
+        учебному плану с учетом обучающегося, содержащему меры'];
+        $dr->checkingFiledInDocumentReception($dr->personalPlan, $arr);
+    }
+
+    public function Test23DirectionCorrectorWorkPart10(HeaderTester $I)
+    {
+        $dr = new DocumentReception($I);
+        $I->moveToServer('Тест 23 - Заполнение документа приёма (Направление коррекционной работы, срок, вид и результат комиссии) - СОШ');
+        $I->inputInSystem('admin', 'admin');
+        $I->openSection('Карты детей');
+        $count = $I->getQuantityElement('div.table.ps > div', 4);
+        for ($i = 4; $i <= $count; $i++) {
+            $I->moveMouseOver('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div');
+            $I->wait(1);
+            $status = $I->grabTextFrom('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--status > div > div.cards-status > div.tooltip.tooltip--left > div');
+            if ($status == 'Документ заполнен') {
+                $type = $I->grabTextFrom('div.table.ps > div:nth-child(' . $i . ') > div.row > div.cell.cell--type-visit > div > span');
+                if ($type == 'Обследование') break;
+            }
+        }
+        $I->wait(1);
+        $I->click('div.cell.cell--status > div', 'div.table.ps > div:nth-child(' . $i . ') > div.row');
+        /*$I->waitForElement('div.popup', 10);
+        $I->wait(1);
+        $I->click('div.popup > form > label:nth-child(1)');
+        $I->wait(1);
+        $I->click('a.button-orange', 'div.popup');*/
+        $I->waitForElement('div.document', 60);
+        $I->waitForElement('div.content', 60);
+        $I->waitForElement('div.document-section', 60);
+        $I->wait(1);
+
+        //Выбираем СПО
+        $dr->setValueFieldInDocumentReception($dr->ovg, $dr->ovgItems[4]);
+
+        //Программы Глухие, Слабослышищие, Слепые, Слабовидящие, НОДА, РАС, УО, ООП
+        $programs = [$dr->programItems[0], $dr->programItems[1], $dr->programItems[2], $dr->programItems[3],
+            $dr->programItems[5], $dr->programItems[7], $dr->programItems[8], $dr->programItems[10]];
+        foreach($programs as $program) {
+            $dr->scrollTo($dr->program);
+            $dr->setValueFieldInDocumentReception($dr->program, $program);
+            $dr->scrollTo($dr->kindCommission);
+            $I->seeElement($dr->kindCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->kindCommission, 'all');
+            $I->seeElement($dr->resultCommission . $dr->requiredField);
+            $dr->checkingFiledInDocumentReception($dr->resultCommission, 'all');
+        }
+        unset($program);
     }
 }

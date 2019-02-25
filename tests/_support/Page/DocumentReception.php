@@ -12,8 +12,9 @@ class DocumentReception
     public $header = 'div.header-section';
     public $document = ' > div.document-item__row';
     public $contextMenu = ' > div.document-item__row > div > div.multiselect > div.multiselect__content-wrapper > ul.multiselect__content';
-    public $required = ' > label > span > span.document-item__title-required';
+    public $requiredField = ' > label > span > span.document-item__title-required';
     public $requiredForCheckboxes = ' > label > span > span > span.document-item__title-required';
+    public $bodyCheckbox = ' > label > span.document-checkbox__icon';
     private $scroll = 'div.ps__rail-y > div.ps__thumb-y';
     private $previousScroll;
 
@@ -41,12 +42,18 @@ class DocumentReception
     public $teacherLogoped = 'div.document-section:nth-child(2) > div.document-section__row:nth-child(3) > div.document-item:nth-child(1)';
     public $teacherDefect = 'div.document-section:nth-child(2) > div.document-section__row:nth-child(4) > div.document-item:nth-child(1)';
     public $teacherSocial = 'div.document-section:nth-child(2) > div.document-section__row:nth-child(5) > div.document-item:nth-child(1)';
+    public $timeRepeatInspection = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(1) > div.document-item:nth-child(1)';
+    public $recommendedInspection = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(1) > div.document-item:nth-child(2) > div.document-checkbox-wrapper:nth-child(1)';
+    public $incompleteDocumentation = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(1) > div.document-item:nth-child(2) > div.document-checkbox-wrapper:nth-child(2)';
+    public $kindCommission = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(2) > div.document-item:nth-child(1)';
+    public $resultCommission = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(2) > div.document-item:nth-child(2)';
+    public $personalPlan = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(3) > div.document-item:nth-child(1)';
 
     public $buttons = 'div.document-buttons';
 
     public $ovgItems = ['Ранняя помощь', 'Дошкольники', 'ФГОС НОО ОВЗ, ФГОС УО', 'СОШ', 'СПО'];
     public $programItems = ['Глухие', 'Слабослышащие', 'Слепые', 'Слабовидящие', 'Тяжелые нарушения речи', 'Нарушения опорно двигательного аппарата',
-        'Задержка психического развития', 'Расстройство аутистического спектра', 'Умственная отсталость'];
+        'Задержка психического развития', 'Расстройство аутистического спектра', 'Умственная отсталость', 'Сложные дефекты', 'Основная образовательная программа(норма)'];
     public $levelEducationItems = ['Дошкольный возраст', 'Начальный общий', 'Основной общий', 'Средний общий'];
     public $assistantItems = ['(НОДА, см. ИПРА) оказание помощи в использовании технических средств реабилитации',
         '(СД и НОДА без навыков самообслуживания) оказание помощи в соблюдении санитарно-гигиенических требований на группу/класс',
@@ -65,8 +72,9 @@ class DocumentReception
         '(6-11 классы – для обучающихся «группы риска») профилактика и коррекция асоциального (девиантного) поведения обучающегося, повышение уровня правовой грамотности обучающегося и его семьи',
         '(для обучающегося «группы риска») профилактика и коррекция асоциального (девиантного) поведения обучающегося, повышение уровня правовой грамотности обучающегося',
         '(обязательно для выбора) координация взаимодействия субъектов образовательного процесса'];
+    public $kindCommissionItems = ['Не требуется', 'Углубленная комиссия', 'Расширенная комиссия', 'Межведомственная комиссия'];
+    public $resultCommissionItems = ['Не требуется', 'Подтверждение образовательного маршрута', 'Изменение образовательного маршрута'];
 
-    public $timeRepeatInspection = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(1) > div.document-item:nth-child(1)';
     protected $tester;
 
     public function __construct(\AcceptanceTester $I)
@@ -75,7 +83,7 @@ class DocumentReception
         $this->previousScroll = $this->header;
     }
 
-    public function checkingFiledInDocumentReception($field, $arr = null)
+    public function checkingFiledInDocumentReception($field, $arr)
     {
         $I = $this->tester;
         switch ($field) {
@@ -108,6 +116,12 @@ class DocumentReception
                 break;
             case $this->teacherSocial:
                 $array = $this->teacherSocialItems;
+                break;
+            case $this->kindCommission:
+                $array = $this->kindCommissionItems;
+                break;
+            case $this->resultCommission:
+                $array = $this->resultCommissionItems;
                 break;
             case $this->variantProgram:
             default:
@@ -185,16 +199,17 @@ class DocumentReception
             $this->districtOO, $this->chosenProgram, $this->withPsychoSpecial, $this->levelEducation,
             $this->variantProgram, $this->assistant, $this->freeEnvironment, $this->specialFacilities,
             $this->tutorEscort, $this->teacherPsy, $this->teacherLogoped, $this->teacherDefect,
-            $this->teacherSocial, $this->timeRepeatInspection];
+            $this->teacherSocial, $this->timeRepeatInspection, $this->kindCommission, $this->resultCommission];
         if ($element == $this->header) {
-           for ($i = 0; $i < 3; $i++) {
-               $I->moveMouseOver($this->scroll);
-               $I->clickWithLeftButton(null, 0, -200);
-           }
+           $I->dragAndDrop($this->scroll, $this->header);
+           $I->wait(1);
         }
         else {
             $index = array_search($element, $elements);
             $previousIndex = array_search($this->previousScroll, $elements);
+            if ($index === false || $previousIndex === false) {
+                throw new ExceptionWithPsycho('Элемент ' . $element . ' не найден в массиве');
+            }
             if ($index > $previousIndex) {
                 while (!$I->boolSeeElement($element)) {
                     $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_DOWN);
@@ -214,36 +229,6 @@ class DocumentReception
             }
         }
         $this->previousScroll = $element;
-
-
-
-        /*if ($element == $this->header) {
-            while (!$I->boolSeeElement('div.document-header')) {
-                $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_UP);
-            }
-            $count = 3;
-        }
-        else {
-            while (!$I->boolSeeElement($element) && !$I->boolSeeElement($this->buttons)) {
-                $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_DOWN);
-            }
-            if (!$I->boolSeeElement($element) && $I->boolSeeElement($this->buttons)) {
-                while (!$I->boolSeeElement($element)) {
-                    $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_UP);
-                }
-                $count = 2;
-            }
-            else {
-                while ($I->boolSeeElement($element) && !$I->boolSeeElement($this->buttons)) {
-                    $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_DOWN);
-                }
-                $count = 3;
-            }
-        }
-        for ($i = 0; $i < $count; $i++) {
-            $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_UP);
-        }
-        $this->previousScroll = $element;*/
     }
 
     /**
