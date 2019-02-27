@@ -4,6 +4,12 @@ use \ExceptionWithPsycho;
 
 class HeaderTester extends \AcceptanceTester
 {
+    const CARDS_CHILDREN = 'Карты детей';
+    const RECORDS = 'Записи';
+    const TABLE_RECEPTIONS = 'Табло приёмов';
+    const ORDERS = 'Отчёты';
+    const ADMIN = 'Администрирование';
+
     public function openSection($section, $tab = NULL)
     {
         switch ($section)
@@ -26,7 +32,7 @@ class HeaderTester extends \AcceptanceTester
                 break;
             case 'Администрирование':
                 $i = 5;
-                $element = '';
+                $element = 'div.admin';
                 break;
             default:
                 throw new ExceptionWithPsycho('Передан неверный параметр.');

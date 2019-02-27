@@ -2,14 +2,17 @@
 
 namespace Page;
 
-use Exception;
 use \ExceptionWithPsycho;
 
 class DocumentReception
 {
     // include url of current page
     public static $URL = '';
+    const ALL = 'all';
+    const EMPTY = 'empty';
+
     public $header = 'div.header-section';
+    private $documentHeader = 'div.document-header';
     public $document = ' > div.document-item__row';
     public $contextMenu = ' > div.document-item__row > div > div.multiselect > div.multiselect__content-wrapper > ul.multiselect__content';
     public $requiredField = ' > label > span > span.document-item__title-required';
@@ -42,6 +45,7 @@ class DocumentReception
     public $teacherLogoped = 'div.document-section:nth-child(2) > div.document-section__row:nth-child(3) > div.document-item:nth-child(1)';
     public $teacherDefect = 'div.document-section:nth-child(2) > div.document-section__row:nth-child(4) > div.document-item:nth-child(1)';
     public $teacherSocial = 'div.document-section:nth-child(2) > div.document-section__row:nth-child(5) > div.document-item:nth-child(1)';
+
     public $timeRepeatInspection = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(1) > div.document-item:nth-child(1)';
     public $recommendedInspection = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(1) > div.document-item:nth-child(2) > div.document-checkbox-wrapper:nth-child(1)';
     public $incompleteDocumentation = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(1) > div.document-item:nth-child(2) > div.document-checkbox-wrapper:nth-child(2)';
@@ -49,7 +53,12 @@ class DocumentReception
     public $resultCommission = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(2) > div.document-item:nth-child(2)';
     public $personalPlan = 'div.document-section:nth-child(3) > div.document-section__row:nth-child(3) > div.document-item:nth-child(1)';
 
+    public $memberCommissionPsy = 'div.document-section:nth-child(4) > div:nth-child(2) > div.document-section__row:nth-child(1) > div.document-item:nth-child(1)';
+    public $memberCommissionSocial = 'div.document-section:nth-child(4) > div:nth-child(2) > div.document-section__row:nth-child(2) > div.document-item:nth-child(1)';
+    public $memberCommissionDefect = 'div.document-section:nth-child(4) > div:nth-child(2) > div.document-section__row:nth-child(3) > div.document-item:nth-child(1)';
+    public $memberCommissionLogoped = 'div.document-section:nth-child(4) > div:nth-child(2) > div.document-section__row:nth-child(4) > div.document-item:nth-child(1)';
     public $buttons = 'div.document-buttons';
+    private $footer = 'footer.footer';
 
     public $ovgItems = ['Ранняя помощь', 'Дошкольники', 'ФГОС НОО ОВЗ, ФГОС УО', 'СОШ', 'СПО'];
     public $programItems = ['Глухие', 'Слабослышащие', 'Слепые', 'Слабовидящие', 'Тяжелые нарушения речи', 'Нарушения опорно двигательного аппарата',
@@ -127,13 +136,14 @@ class DocumentReception
             default:
                 $array = null;
         }
+        $I->wait(1);
         $I->click($field . $this->document);
         $I->waitForElement($field . $this->contextMenu);
         $I->wait(1);
         $countItem = $I->getQuantityElement($field . $this->contextMenu . '> li.multiselect__element');
-        if ($arr == 'all') {
+        if ($arr == DocumentReception::ALL) {
             $arr = $array;
-        } elseif ($arr == 'empty') {
+        } elseif ($arr == DocumentReception::EMPTY) {
             $arr = ['Нет данных'];
             $countItem = 1;
         } elseif (!is_array($arr)) {
@@ -145,18 +155,14 @@ class DocumentReception
             }
             foreach ($array as $item) {
                 if (in_array($item, $arr)) {
-                    if (!$I->boolSee($item, $field . $this->contextMenu)) {
-                        $I->comment('Элемент ' . $item . 'не видим.');
-                    }
+                    $I->see($item, $field . $this->contextMenu);
                 } else {
                     $I->dontSee($item, $field . $this->contextMenu);
                 }
             }
         } else {
             foreach ($arr as $item) {
-                if (!$I->boolSee($item, $field . $this->contextMenu)) {
-                    $I->comment('Элемент ' . $item . 'не видим.');
-                }
+                $I->see($item, $field . $this->contextMenu);
             }
         }
         unset($item);
@@ -168,9 +174,6 @@ class DocumentReception
     {
         $I = $this->tester;
         $valueFound = false;
-        $I->waitForElement('div.document', 60);
-        $I->waitForElement('div.content', 60);
-        $I->waitForElement('div.document-section', 60);
         $I->click($field . $this->document);
         $I->waitForElement($field . $this->contextMenu);
         $I->wait(1);
@@ -178,14 +181,15 @@ class DocumentReception
         for ($count = 1; $count <= $countItem; $count++) {
             $valueCurrent = $I->grabTextFrom($field . $this->contextMenu . ' > li.multiselect__element:nth-child(' . $count . ')');
             if ($valueCurrent == $value) {
-                $I->click($field . $this->contextMenu . ' > li.multiselect__element:nth-child(' . $count . ')');
-                $I->wait(1);
-                $I->see($value, $field);
                 $valueFound = true;
                 break;
             }
         }
-        if (!$valueFound) {
+        if ($valueFound) {
+            $I->click($field . $this->contextMenu . ' > li.multiselect__element:nth-child(' . $count . ')');
+            $I->wait(1);
+            $I->see($value, $field);
+        } else {
             throw new ExceptionWithPsycho('Значение "' . $value . '" не найдено в поле "' . $field . '".');
         }
         $I->wait(1);
@@ -194,33 +198,56 @@ class DocumentReception
     public function scrollTo($element)
     {
         $I = $this->tester;
-        $elements = [$this->header, $this->type, $this->ovg, $this->program, $this->FIO, $this->dateOfBorn,
-            $this->bilingual, $this->hasInvalid, $this->invalid, $this->deviant, $this->nameOO,
-            $this->districtOO, $this->chosenProgram, $this->withPsychoSpecial, $this->levelEducation,
-            $this->variantProgram, $this->assistant, $this->freeEnvironment, $this->specialFacilities,
-            $this->tutorEscort, $this->teacherPsy, $this->teacherLogoped, $this->teacherDefect,
-            $this->teacherSocial, $this->timeRepeatInspection, $this->kindCommission, $this->resultCommission];
+        $elements = get_class_vars(get_class($this)); //Получаем ассоциативный массив полей класса
         if ($element == $this->header) {
-           $I->dragAndDrop($this->scroll, $this->header);
-           $I->wait(1);
-        }
-        else {
-            $index = array_search($element, $elements);
-            $previousIndex = array_search($this->previousScroll, $elements);
+            $I->dragAndDrop($this->scroll, $this->header);
+            $I->wait(1);
+        } elseif ($element == $this->memberCommissionLogoped) {
+            $I->dragAndDrop($this->scroll, $this->footer);
+            $I->wait(1);
+        } else {
+            //
+            $arrayKeys = array_keys($elements); //Получаем индексированный массив ключей ассоциативного массива
+            $key = array_search($element, $elements); //Получаем ключ элемента, переданного через параметр в ассоциативном массиве
+            $index = array_search($key, $arrayKeys); //Получеам индекс (последовательный номер расположения на странице) ключа элемента в параметреиз массива ключей
+            $keyPrevious = array_search($this->previousScroll, $elements); //Получаем ключ предыдущего проскроленного элемента из ассоциативного массива
+            $previousIndex = array_search($keyPrevious, $arrayKeys); //Получаем индекс ключа предыдущего элемента из массива ключей
             if ($index === false || $previousIndex === false) {
                 throw new ExceptionWithPsycho('Элемент ' . $element . ' не найден в массиве');
             }
             if ($index > $previousIndex) {
+                $i = 0;
                 while (!$I->boolSeeElement($element)) {
                     $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_DOWN);
+                    if ($I->boolSeeElement($this->buttons)) {
+                        $i++;
+                        if ($i >= 10) {
+                            throw new ExceptionWithPsycho('Не удалось проскроллить до элемента ' . $element);
+                        }
+                    }
                 }
+                $i = 0;
                 while ($I->boolSeeElement($element) && !$I->boolSeeElement($this->buttons)) {
                     $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_DOWN);
+                    if ($I->boolSeeElement($this->buttons)) {
+                        $i++;
+                        if ($i >= 10) {
+                            throw new ExceptionWithPsycho('Не удалось проскроллить до элемента ' . $element);
+                        }
+                    }
                 }
                 $count = 3;
             } else {
+                $i = 0;
                 while (!$I->boolSeeElement($element)) {
                     $I->pressKey($this->scroll, \Facebook\WebDriver\WebDriverKeys::ARROW_UP);
+                    $i++;
+                    if ($I->boolSeeElement($this->documentHeader)) {
+                        $i++;
+                        if ($i >= 10) {
+                            throw new ExceptionWithPsycho('Не удалось проскроллить до элемента ' . $element);
+                        }
+                    }
                 }
                 $count = 2;
             }
@@ -229,7 +256,9 @@ class DocumentReception
             }
         }
         $this->previousScroll = $element;
+        $I->wait(1);
     }
+
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
